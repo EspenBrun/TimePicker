@@ -3,7 +3,7 @@ var ReactDOM = require('react-dom');
 
 var Button = React.createClass({
   scream: function () {
-    alert('AAAAAAAAHHH!!!!!');
+    alert('AAAAAAAAHHH!!!!! lol');
   },
 
   render: function () {
