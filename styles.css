@@ -31,8 +31,11 @@ body {
 
 
 h1 {
-    color: blue;
+    color: white;
     text-align: center;
+    padding: 2em;
+    background: #68EFAD;
+    font-family: 'Open Sans', sans-serif;
 }
 
 ul {

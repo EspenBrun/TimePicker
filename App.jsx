@@ -6,7 +6,7 @@ var App = React.createClass({
 	render: function(){
 		return (
 			<div>
-			Hello world maddafakka!
+			Helloo world maddafakaka!
 			</div>);
 	}
 });
