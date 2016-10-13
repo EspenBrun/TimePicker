@@ -4,7 +4,7 @@ var App = React.createClass({
 	render: function(){
 		return (
 			<h3>	
-			A picker to pic timess
+			A picker to pick time
 			</h3>
 		);
 	}
