@@ -39,12 +39,19 @@ h1 {
     margin: 0;
 }
 
-p {
+h2,h3 {
 	color: white;
 	text-align: center;
 	padding: 2em;
 	background: #7A1EA1;
 	margin: 0;
+	font-family: 'Roboto:100', sans-serif;
+	font-weight: normal;
+
+}
+
+button.uppercase {
+	text-transform: uppercase;
 }
 
 ul {

@@ -7,7 +7,7 @@ var Button = React.createClass({
   },
 
   render: function () {
-    return <button onClick={this.scream}>AAAAAH!</button>;
+    return <button className="uppercase" onClick={this.scream}>AAAAAH!</button>;
   }
 });
 

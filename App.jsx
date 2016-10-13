@@ -5,9 +5,9 @@ var React = require('react');
 var App = React.createClass({
 	render: function(){
 		return (
-			<p>
-			Hello world maddafakksss!
-			</p>);
+			<h3>
+			A picker to pic time
+			</h3>);
 	}
 });
 
