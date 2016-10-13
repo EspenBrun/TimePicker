@@ -34,8 +34,17 @@ h1 {
     color: white;
     text-align: center;
     padding: 2em;
-    background: #68EFAD;
-    font-family: 'Open Sans', sans-serif;
+    background: #691A99;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+p {
+	color: white;
+	text-align: center;
+	padding: 2em;
+	background: #7A1EA1;
+	margin: 0;
 }
 
 ul {
@@ -59,22 +68,23 @@ nav a {
 button {
 	-webkit-transition-duration: 0.1s; /* Safari */
 	transition-duration: 0.1s;
-	background-color: #F4595B;
+	background-color: #68EFAD;
 	border-radius: 8px;
 	border-bottom: 4px solid #C24648;
-	color: white;
+	color: black;
+	opacity: 54%;
 	padding: 15px 32px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
-	font-family: 'Oxygen', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	letter-spacing: 2px;
 	cursor: pointer;
 }
 
 button:hover {
-  background-color: #FF7375;
+  background-color: #68EFAD;
   border: none;
   border-radius: 8px;
   border-bottom: 4px solid #C24648;
@@ -84,7 +94,7 @@ button:hover {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  font-family: 'Oxygen', sans-serif;
+  font-family: 'Roboto', sans-serif;
   letter-spacing: 2px;
 }
 
@@ -99,6 +109,6 @@ button:active {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  font-family: 'Oxygen', sans-serif;
+  font-family: 'Roboto', sans-serif;
   letter-spacing: 2px;
 }
