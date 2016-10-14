@@ -2,6 +2,14 @@ var React = require('react');
 
 var Modal = React.createClass({
 
+  openModal: function(){
+    this.setState({ isModalOpen: true});
+  },
+
+  closeModal: function(){
+    this.setState({ isModalOpen: false});
+  },
+
   render: function(){
     
     if (this.props.isOpen === false){
@@ -59,13 +67,14 @@ var Modal = React.createClass({
     )
   }
 
-//  close: function(e) {
-//    e.preventDefault()
-//
-//    if (this.props.onClose) {
-//      this.props.onClose()
-//    }
-//  }
+  close: function(e) {
+    e.preventDefault();
+
+    if (this.props.onClose) {
+      this.props.onClose();
+    }
+  }
+
 });
 
 module.exports = Modal;
