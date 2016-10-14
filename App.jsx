@@ -21,8 +21,8 @@ var App = React.createClass({
 			<div>
 				<button onClick={() => this.openModal()}>Open Modal</button>
 				<Modal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
-					<h3>Modal title lol</h3>
-					<p>helslo</p>
+					<h3>Modal title lossl</h3>
+					<p>helsslo</p>
 					<p>
 						<button onClick={() => this.closeModal}>Close</button>
 					</p>
