@@ -9,9 +9,12 @@
   "author": "Espen",
   "license": "ISC",
   "dependencies": {
+    "moment": "^2.15.1",
     "rc-time-picker": "^2.0.2",
     "react": "^15.3.2",
+    "react-date-picker": "^5.3.28",
     "react-dom": "^15.3.2",
+    "react-overlays": "^0.6.10",
     "react-timepicker": "^1.1.5",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2"
