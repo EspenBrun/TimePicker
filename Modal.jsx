@@ -1,5 +1,6 @@
 var React = require('react');
 
+
 var Modal = React.createClass({
 
   openModal: function(){
@@ -65,7 +66,7 @@ var Modal = React.createClass({
                  onClick={e => this.close(e)}/>}
       </div>
     )
-  }
+  },
 
   close: function(e) {
     e.preventDefault();
