@@ -59,13 +59,13 @@ var Modal = React.createClass({
     )
   }
 
-  close: function(e) {
-    e.preventDefault();
-
-    if (this.props.onClose) {
-      this.props.onClose()
-    }
-  }
+//  close: function(e) {
+//    e.preventDefault()
+//
+//    if (this.props.onClose) {
+//      this.props.onClose()
+//    }
+//  }
 });
 
 module.exports = Modal;

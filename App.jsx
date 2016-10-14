@@ -1,4 +1,5 @@
 var React = require('react');
+var Modal = require('./Modal.jsx');
 
 var App = React.createClass({
 
@@ -21,7 +22,7 @@ var App = React.createClass({
 				<button onClick={() => this.openModal()}>Open Modal</button>
 				<Modal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
 					<h1>Modal title</h1>
-					<p>hello</p>
+					<p>helslo</p>
 					<p>
 						<button onClick={() => this.closeModal}>Close</button>
 					</p>
