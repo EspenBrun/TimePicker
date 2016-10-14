@@ -7,7 +7,7 @@ var TimeField = React.createClass({
 
 	render: function(){
 		return (
-			<button onClick={this.popup}>00:00</button>
+			<button onClick={this.popup}>00:00 as</button>
 		);
 	}
 });
