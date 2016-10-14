@@ -66,7 +66,7 @@ var Modal = React.createClass({
                  onClick={e => this.close(e)}/>}
       </div>
     )
-  },
+  },  
 
   close: function(e) {
     e.preventDefault();
