@@ -1,6 +1,6 @@
 var React = require('react');
 
-var Modal = React.createClass({
+var App = React.createClass({
 
 	getInitialState: function(){
 		return {isModalOpen: false};
@@ -30,3 +30,5 @@ var Modal = React.createClass({
 		)		
 	}
 });
+
+module.exports = App;
