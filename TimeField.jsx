@@ -4,6 +4,8 @@ import TimepickerExample from './TimepickerExample.jsx';
 
 var TimeField = React.createClass({
 
+	
+
 	getInitialState: function(){
 		return {isModalOpen: false};
 	},
@@ -18,8 +20,9 @@ var TimeField = React.createClass({
 
 
 	render: function(){
-		return (
-			<div>
+
+		return (	
+			<div>				
 				<button onClick={() => this.openModal()}>00:00</button>
 				<Modal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
 					<h3>00:00</h3>
@@ -28,8 +31,9 @@ var TimeField = React.createClass({
 					<p>
 						<button onClick={() => this.closeModal()}>Close</button>
 					</p>
-				</Modal>
+			</Modal>
 			</div>
+			
 		)		
 	}
 });
