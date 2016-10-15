@@ -264,6 +264,53 @@ var Button = React.createClass({
   }
 });
 
+///////////////////////////////
+// STATE //////////////////////
+///////////////////////////////
+
+// props and state are the only parts of a component that change
+// props are passed from the outside, state from the inside
+// But still, I can use a child to change a parents props,
+//    and then use the props to change the state
+//    therby implicitly changing the state form outside
+// To give a component state I need an getInitialState function
+// getInitialState returns an object, just like the props
+// Here, <Example /> has a state of {mood: 'dcent'}
+// To use the state, this.state.stateName
+
+var Example = React.createClass({
+  getInitialState: function () {
+    return { mood: 'decent' };
+  },
+
+  render: function () {
+    return <h1>I'm feeling {this.state.mood}</h1>;
+  }
+});
+
+// A component can also change it's state
+// this.setState
+// Can now have a default state, and can change that depending on input
+//    like a conditional
+var Example = React.createClass({
+  
+  getInitialState: function () {
+    return { mood: 'decent' };
+  },
+
+  makeHappy: function(){
+    this.setState({mood: 'happy'});
+  },
+
+  render: function () {
+    return <h1>I'm feeling {this.state.mood}</h1>;
+  }
+});
+
+// I can not call this.setState from inside render
+// this.setState automatically calls render
+// So we can see changes made by calling this.setState immediately
+// this.setState inside render would create an infinite loop
 
 
 
