@@ -1,5 +1,6 @@
 var React = require('react');
 var Modal = require('./Modal.jsx');
+import TimepickerExample from './TimepickerExample.jsx';
 
 var TimeField = React.createClass({
 
@@ -23,6 +24,7 @@ var TimeField = React.createClass({
 				<Modal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
 					<h3>00:00</h3>
 					<p>timepicke</p>
+					<TimepickerExample />
 					<p>
 						<button onClick={() => this.closeModal()}>Close</button>
 					</p>
