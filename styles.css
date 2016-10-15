@@ -1,45 +1,15 @@
 html, body {
 	margin: 0;
 	height: 100%;
+	font-family: 'Roboto', sans-serif;
+  	text-align: center;
 }
-
-body {
-	background-color: #ffffff;
-	font-family: Helvetica, Arial, sans-serif;
-  text-align: center;
-}
-
-#timepicker {
-	margin:50px;
-}
-
-#button {
-	position: relative;
-	height: 100%;
-	width: 100%;
-	padding: 2em;
-}
-
-#button div {
-	width: 100%;
-}
-
-#button div div {
-	height: 100%;
-}
-
-#button div div div {
-	position: relative;
-	height: auto;
-}
-
 
 h1 {
     color: white;
     text-align: center;
     padding: 2em;
     background: #691A99;
-    font-family: 'Roboto', sans-serif;
     margin: 0;
 }
 
@@ -55,8 +25,6 @@ h2,h3 {
 
 }
 
-
-
 button {
 	background: transparent;
 	color: black;
@@ -66,7 +34,5 @@ button {
 	padding: .5em .75em;
 	font-family: 'Roboto', sans-serif;
 	cursor: pointer;
-	letter-spacing: .1em
-	margin:2em;
 }
 
