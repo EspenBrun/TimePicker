@@ -4,11 +4,19 @@ var React = require('react');
 
 var Modal = React.createClass({
 
+  close: function(e) {
+    e.preventDefault();
+
+    if (this.props.onClose) {
+      this.props.onClose();
+    }
+  },
 
 // the render function
   render: function(){
 
-    
+    //var stringProps = JSON.stringify(this.props);
+
     if (this.props.isOpen === false){
       return null;
     }
@@ -34,23 +42,17 @@ var Modal = React.createClass({
 
 
     return (
-      <div className={this.props.containerClassName}>
-        <div className={this.props.className} style={modalStyle}>
+      <div>
+        <div style={modalStyle}>
+          <p>lol</p>
+
           {this.props.children}
         </div>
         {!this.props.noBackdrop &&
-            <div className={this.props.backdropClassName} style={backdropStyle}
+            <div style={backdropStyle}
                  onClick={e => this.close(e)}/>}
       </div>
     )
-  },  
-
-  close: function(e) {
-    e.preventDefault();
-
-    if (this.props.onClose) {
-      this.props.onClose();
-    }
   }
 
 });
