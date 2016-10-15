@@ -24,7 +24,7 @@ var App = React.createClass({
 					<h3>Modal title lsossl</h3>
 					<p>helss	slo</p>
 					<p>
-						<button onClick={() => this.closeModal}>Close</button>
+						<button onClick={() => this.closeModal()}>Close</button>
 					</p>
 				</Modal>
 			</div>
