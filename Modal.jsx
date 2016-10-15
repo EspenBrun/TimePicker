@@ -15,7 +15,7 @@ var Modal = React.createClass({
 // the render function
   render: function(){
 
-    // if the Modal should open, render the children.
+    // if the Modal should open, render the children. 
     // if the Modal should not open, return null.
     // returning null tells React that I do not want anything rendered
     if (this.props.isOpen === true){
@@ -23,7 +23,7 @@ var Modal = React.createClass({
         <div>
           <div id="modalStyle">
             {this.props.children}
-          </div>
+          </div>   
           <div id="backdropStyle" onClick={e => this.close(e)}/>
         </div>
       )
