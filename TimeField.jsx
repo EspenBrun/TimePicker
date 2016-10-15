@@ -1,14 +1,34 @@
 var React = require('react');
+var Modal = require('./Modal.jsx');
 
 var TimeField = React.createClass({
-	popup: function(){
-		alert('it works');
+
+	getInitialState: function(){
+		return {isModalOpen: false};
 	},
+
+	openModal: function(){
+		this.setState({isModalOpen: true});
+	},
+
+	closeModal: function(){
+		this.setState({isModalOpen: false});
+	},
+
 
 	render: function(){
 		return (
-			<button onClick={this.popup}>00:00 as</button>
-		);
+			<div>
+				<button onClick={() => this.openModal()}>00:00</button>
+				<Modal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
+					<h3>00:00</h3>
+					<p>timepicke</p>
+					<p>
+						<button onClick={() => this.closeModal()}>Close</button>
+					</p>
+				</Modal>
+			</div>
+		)		
 	}
 });
 
