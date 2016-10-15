@@ -1,16 +1,25 @@
 var React = require('react');
 
+// This component creates the popup when the timeField is clicked
 
 var Modal = React.createClass({
 
+// isModalOpen controls if the modal is visible or not
+// setting the initial state of the isModalOpen
+  getInitialState: function(){
+    return({ isModalOpen: false});
+  },
+
+// can call openModal or closeModal to change the state of isModalOpen
   openModal: function(){
     this.setState({ isModalOpen: true});
   },
-
   closeModal: function(){
     this.setState({ isModalOpen: false});
   },
 
+
+// the render function
   render: function(){
     
     if (this.props.isOpen === false){
