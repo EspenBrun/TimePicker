@@ -34,20 +34,6 @@ var Modal = React.createClass({
       zIndex: '9999',
       background: '#fff'
     }
-/*
-    if (this.props.width && this.props.height) {
-      modalStyle.width = this.props.width + 'px'
-      modalStyle.height = this.props.height + 'px'
-      modalStyle.marginLeft = '-' + (this.props.width/2) + 'px',
-      modalStyle.marginTop = '-' + (this.props.height/2) + 'px',
-      modalStyle.transform = null
-    }
-
-    if (this.props.style) {
-      for (let key in this.props.style) {
-        modalStyle[key] = this.props.style[key]
-      }
-    }*/
 
     let backdropStyle = {
       position: 'absolute',
