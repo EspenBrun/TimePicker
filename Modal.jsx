@@ -44,13 +44,9 @@ var Modal = React.createClass({
     return (
       <div>
         <div style={modalStyle}>
-          <p>lol</p>
-
           {this.props.children}
         </div>
-        {!this.props.noBackdrop &&
-            <div style={backdropStyle}
-                 onClick={e => this.close(e)}/>}
+        <div style={backdropStyle} onClick={e => this.close(e)}/>
       </div>
     )
   }

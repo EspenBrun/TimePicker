@@ -20,14 +20,8 @@ var TimeField = React.createClass({
 
 
 	render: function(){
-		
 
-		//var stringProps = JSON.stringify(this.props);
-		//var stringState = JSON.stringify(this.state);
-		//<p>TimeField props: {stringProps}</p>
-		//<p>TimeField state: {stringState}</p>
-
-		return (
+		return (	
 			<div>				
 				<button onClick={() => this.openModal()}>00:00</button>
 				<Modal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
