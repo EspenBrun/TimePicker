@@ -7,6 +7,7 @@ var Modal = React.createClass({
 
 // the render function
   render: function(){
+
     
     if (this.props.isOpen === false){
       return null;
