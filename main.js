@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import TimepickerExample from './TimepickerExample.jsx';
 //import Test from './Test.jsx';  
-import TimePicker from './TimePicker.jsx';
+//import TimePicker from './TimePicker.jsx';
 import TimeField from './TimeField.jsx'
 
 ReactDOM.render(<TimeField />, document.getElementById('timefield'));
