@@ -15,8 +15,6 @@ var Modal = React.createClass({
 // the render function
   render: function(){
 
-    //var stringProps = JSON.stringify(this.props);
-
     if (this.props.isOpen === false){
       return null;
     }
