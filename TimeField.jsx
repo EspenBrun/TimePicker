@@ -30,6 +30,7 @@ var TimeField = React.createClass({
 					<p>
 						<button onClick={() => this.closeModal()}>Close</button>
 					</p>
+					
 			</Modal>
 			</div>
 			
