@@ -58,7 +58,7 @@ renderMinutesBubbles: function () {
 
         var bubbles = [];
 
-        for (i=0; i < positions.length; ++i) {
+        for (var i=0; i < positions.length; ++i) {
             // get position
             x = positions[i][0];
             y = positions[i][1];
@@ -86,7 +86,7 @@ renderMinutesBubbles: function () {
             ));
         }
 
-        return bubbles;
+        return bubbles; 
     },
 
     render: function () {
@@ -95,7 +95,7 @@ renderMinutesBubbles: function () {
 
         return React.createElement(
             'svg',
-            { width: size, height: size }
+            { width: size, height: size },
             //React.createElement('line', { ref: 'hand1', className: 'timepicker-hand', x1: size / 2, y1: size / 2, x2: size / 2, y2: size / 2 }),
             //React.createElement('line', { ref: 'hand2', className: 'timepicker-hand', x1: size / 2, y1: size / 2, x2: size / 2, y2: size / 2 }),
            /* React.createElement(
@@ -103,12 +103,12 @@ renderMinutesBubbles: function () {
                 { className: mode ? 'timepicker-visible' : 'timepicker-invisible' },
                 this.renderHoursBubbles()
             ),*/
-         /*   React.createElement(
+            React.createElement(
                 'g',
-                className: 'timepicker-visible',
+                {className: 'timepicker-visible'},
                 // { className: mode ? 'timepicker-invisible' : 'timepicker-visible' },
                 this.renderMinutesBubbles()
-            )*/
+            )
         );
     },
 });
