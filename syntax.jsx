@@ -445,7 +445,11 @@ getDefaultProps: function(){
 // for example in componentDidMount 
 render: function(){},
 
+/////////////////////
+// DEBUGGING ////////
+////////////////////
 
+// Are your fukn variables etc consistently named???? ARE YOU SURE??
 
 
 
