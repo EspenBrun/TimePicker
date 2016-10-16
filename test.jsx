@@ -88,24 +88,6 @@ renderMinutesBubbles: function () {
             		{textElement}            		
             	</g>
             );
-
-            /*bubbles.push(React.createElement(
-                'g',	
-                {
-                    key: i,
-
-                    className: 'timepicker-bubble' + (i % 5 !== 0 ? ' small' : '') + (minutes === i ? ' active' : ''),
-
-                    // onClick:     onClick,
-                    // onMouseMove: onMouseMove
-                },
-                React.createElement('circle', { cx: x, cy: y, r: i % 5 !== 0 ? (minutes === i ? 5 : 0) : 15 }),
-                i % 5 === 0 ? React.createElement(
-                    'text',
-                    { x: x, y: y },
-                    i
-                ) : React.createElement('circle', { cx: x, cy: y, r: 10 })
-            ));*/
         }
 
         return bubbles; 
