@@ -369,3 +369,71 @@ var MyButton = React.createClass({
 
 console.log(require('./Manifestos').futurist);
 
+////////////////////////////////
+// LIFECYCLE ///////////////////
+////////////////////////////////
+
+// BEFORE ANYTHING
+
+// displayName is a sting that is used during debugging
+// JSX sets this value automatically
+displayName: '',
+
+// statics object, I can run these before 
+//     any component instances are created
+// statics do not have explicit access to the props and state
+statics: {},
+
+// validate props: so maybe not something I need right now
+propTypes: {},
+
+// BEFORE MOUNTING
+
+// invoked once, before the initial rendering
+// both on client and server side
+componentWillMount: function(){},
+
+
+// AFTER MOUNTING
+
+// invoked once, right after the initial rendering
+// only on client side
+componentDidMount: function(){},
+
+// UPDATING
+
+// Not invoked on the initial render
+// Invoked when a component is receiving new props,
+//    like if the end user changes the time on the clock
+// This is used to respond to a prop transition
+//    before render is called, by updating this.setState()
+// The old props can be accessed via this.props
+// Calling this.setState() within componentWillRecieveProps
+//    dos not trigger an additional render
+// Not sure if it has to have nextProps as an argument
+componentWillRecieveProps: function(nextProps){
+  this.setState({
+    likesIncreasing: nextProps.likeCount > this.props.likeCount
+  });
+},
+
+// Invoked immediately when new peops or state are being recieved
+// Not called on initial render
+// Use to do preparations before an update occurs
+componentWillUpdate: function(){},
+
+// invoked once before the component is mounted
+getInitialState: function(){},
+getDefaultProps: function(){},
+
+// render: is a lifecycle method
+// render should be pure
+// it should not modify component state
+// modifying should be done in other lifecycle components
+// for example in componentDidMount 
+render: function(){},
+
+
+
+
+
