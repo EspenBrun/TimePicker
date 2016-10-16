@@ -21,7 +21,7 @@ var Test = React.createClass({
 	}, 
 
 	// Calculate positions on a circle for each minute
-	// Slightly modified, men for loop is copypaste
+	// Slightly modified, men for loop is copypaste (just trigonomtry I know I can do)
     calcMinutePositions: function () {
     	var size   = this.props.size;
     	var radius = this.props.radius;
