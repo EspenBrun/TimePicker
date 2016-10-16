@@ -9,7 +9,7 @@ var Test = React.createClass({
 		return{
 			minutes: 0,
 			size: 300,
-			radius: 125
+			radius: 100
 
 		    // mode: this.HOURS,
             // hours:   0,
@@ -68,7 +68,7 @@ renderMinutesBubbles: function () {
             // onMouseMove = this.onMouseMoveMinute(i);
 
             bubbles.push(React.createElement(
-                'g',
+                'g',	
                 {
                     key: i,
 
@@ -105,13 +105,15 @@ renderMinutesBubbles: function () {
             ),*/
             React.createElement(
                 'g',
-                {className: 'timepicker-visible'},
+                {className: 'timepicker-visible' },
                 // { className: mode ? 'timepicker-invisible' : 'timepicker-visible' },
                 this.renderMinutesBubbles()
             )
         );
     },
+
 });
 
 
 module.exports = Test;
+//this is a comment dd ore ssssss
