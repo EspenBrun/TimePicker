@@ -1,5 +1,7 @@
 var React = require('react');
 
+// There is getDefaultProps here
+// There is no setInitialState here
 var Timepicker = React.createClass({
     displayName: '',
 
@@ -25,6 +27,10 @@ var Timepicker = React.createClass({
     }
 })	;
 
+
+
+// There is no getDefaultProps here
+// There is no setInitialState here
 Timepicker.Info = React.createClass({
     displayName: '',
 
@@ -41,6 +47,10 @@ Timepicker.Info = React.createClass({
     }
 });
 
+
+
+// There is no getDefaultProps here
+// There is getInitialState here 
 Timepicker.Clock = React.createClass({
     displayName: '',
 

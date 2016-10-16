@@ -7,13 +7,21 @@ var Test = React.createClass({
 	// set default props. Props can be changed from outside
 	getDefaultProps: function(){
 		return{
-			size: 10,
-			radius: 100
+			size: 300,
+			radius: 125
+
+		    // mode: this.HOURS,
+            // hours:   0,
+            // minutes: 0,
+            // size:   300,
+            // radius: 125,
+            // militaryTime: true
 		};
 	}, 
 
 	// Calculate positions on a circle for each minute
-    calcMinPos: function () {
+	// Slightly modified, men for loop is copypaste
+    calcMinutePositions: function () {
     	var size   = this.props.size;
     	var radius = this.props.radius;
 
@@ -32,7 +40,7 @@ var Test = React.createClass({
 	// set inital state. State can be changed from the inside
 	getInitialState: function(){
 		return {
-			minutePos: this.calcMinPos
+			minutePos: this.calcMinutePositions()
 		};
 	}, 
 
