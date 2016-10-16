@@ -8,20 +8,14 @@ var Test = React.createClass({
   },
 
   render: function () {
-  	var stringProps = JSON.stringify(this.props);
+  	//var stringProps = JSON.stringify(this.props);
 
     return (
       <div>
-        <h1>CHECK OUT ssMY PROPS OBJECT</h1>
-        <h2>{stringProps}</h2>
+        <button onClick={this.scream}>Click</button>
       </div>
     );
   }
 });
 
 module.exports = Test;
-
-// Now, this has no properties!
-// But then I do <Test myProp="hello" />
-// Then that component instance has a props object:
-// {"myProp":"hello"}

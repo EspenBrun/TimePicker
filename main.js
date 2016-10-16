@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import TimepickerExample from './TimepickerExample.jsx';
-//import Test from './Test.jsx';  
-//import TimePicker from './TimePicker.jsx';
+import Timepicker from 'react-timepicker';
 import TimeField from './TimeField.jsx'
 
+import Test2 from './Test2.jsx';
+
+
 ReactDOM.render(<TimeField />, document.getElementById('timefield'));
-
-//ReactDOM.render(<TimePicker />, document.getElementById('timepicker'));
-ReactDOM.render(<TimepickerExample />, document.getElementById('timepicker-example'));
-
+ReactDOM.render(<Timepicker/>, document.getElementById('timepicker'));
+  
+ReactDOM.render(<Test2/>, document.getElementById('test'));
 //ReactDOM.render(<Test scream="Hello"/>, document.getElementById('test'));
 //ReactDOM.render(<Test>I am a child</Test>, document.getElementById('test'));
 
+  

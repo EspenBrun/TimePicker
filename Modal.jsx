@@ -12,7 +12,7 @@ var Modal = React.createClass({
       this.props.onClose();
     }
   },
-
+ 
 // the render function
   render: function(){
 

@@ -264,6 +264,14 @@ var Button = React.createClass({
   }
 });
 
+// Set default props
+getDefaultProps: function(){
+  return {
+    size: 50,
+    radius: 100
+  };
+},
+
 ///////////////////////////////
 // STATE //////////////////////
 ///////////////////////////////
@@ -423,8 +431,12 @@ componentWillRecieveProps: function(nextProps){
 componentWillUpdate: function(){},
 
 // invoked once before the component is mounted
-getInitialState: function(){},
-getDefaultProps: function(){},
+getInitialState: function(){
+  return {};
+},
+getDefaultProps: function(){
+  return {};
+},
 
 // render: is a lifecycle method
 // render should be pure
