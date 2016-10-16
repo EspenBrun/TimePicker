@@ -67,6 +67,8 @@ renderMinutesBubbles: function () {
             // onClick     = this.onClickMinute(i);
             // onMouseMove = this.onMouseMoveMinute(i);
 
+            
+
             bubbles.push(React.createElement(
                 'g',	
                 {
@@ -93,22 +95,12 @@ renderMinutesBubbles: function () {
         var size = this.props.size;
         //var mode = this.state.mode;
 
-        return React.createElement(
-            'svg',
-            { width: size, height: size },
-            //React.createElement('line', { ref: 'hand1', className: 'timepicker-hand', x1: size / 2, y1: size / 2, x2: size / 2, y2: size / 2 }),
-            //React.createElement('line', { ref: 'hand2', className: 'timepicker-hand', x1: size / 2, y1: size / 2, x2: size / 2, y2: size / 2 }),
-           /* React.createElement(
-                'g',
-                { className: mode ? 'timepicker-visible' : 'timepicker-invisible' },
-                this.renderHoursBubbles()
-            ),*/
-            React.createElement(
-                'g',
-                {className: 'timepicker-visible' },
-                // { className: mode ? 'timepicker-invisible' : 'timepicker-visible' },
-                this.renderMinutesBubbles()
-            )
+        return (
+        	<svg width={size} height={size}>
+        		<g className="timepicker-visible">
+        			{this.renderMinutesBubbles()}
+        		</g>
+        	</svg>
         );
     },
 
