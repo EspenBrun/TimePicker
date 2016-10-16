@@ -438,6 +438,10 @@ getDefaultProps: function(){
   return {};
 },
 
+// Invoked immediately after the component's updates are flushed to the DOM
+// Not invoked on initial render
+// Use as an oppurtunity to operate on the DOM when the component has been updated
+
 // render: is a lifecycle method
 // render should be pure
 // it should not modify component state
