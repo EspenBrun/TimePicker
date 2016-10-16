@@ -67,9 +67,29 @@ renderMinutesBubbles: function () {
             // onClick     = this.onClickMinute(i);
             // onMouseMove = this.onMouseMoveMinute(i);
 
-            
+            // conditional text element to be used inside JSX
+            // If minutes divide by 5, make text with the minutes
+            // Else make a circle of radius 10
+            var textElement = (i%5==0 ? <text x={x} y={y}>{i}</text> : <circle cx={x} cy={y} r="10"></circle>);
 
-            bubbles.push(React.createElement(
+            // Bubbles with numbers that does divide by 5
+            // 		is given an addition of ' small' in their classNames.
+            // The bubble that has the same value as minues, which is saved in the state,
+            //		is given an additioan of ' active' in its className
+            // This allows for separate styling!
+            // The size is determined by first checking if devideable by 5.
+            // These get a radius of 15
+            // Other bubles get radii 0, unless the bubble is selected.
+            // Then the bubble is small, radius 5.
+            bubbles.push(
+            	<g 	key={i}
+            		className=	{'timepicker-bubble' + (i%5==0 ? '' : ' small') + (minutes===i ? ' active' : '')}>
+            		<circle cx={x} cy={y} r={ i%5==0 ? 15 : (minutes === i ? 5 : 0) }/>
+            		{textElement}            		
+            	</g>
+            );
+
+            /*bubbles.push(React.createElement(
                 'g',	
                 {
                     key: i,
@@ -79,13 +99,13 @@ renderMinutesBubbles: function () {
                     // onClick:     onClick,
                     // onMouseMove: onMouseMove
                 },
-                React.createElement('circle', { cx: x, cy: y, r: i % 5 !== 0 ? minutes === i ? 5 : 0 : 15 }),
+                React.createElement('circle', { cx: x, cy: y, r: i % 5 !== 0 ? (minutes === i ? 5 : 0) : 15 }),
                 i % 5 === 0 ? React.createElement(
                     'text',
                     { x: x, y: y },
                     i
                 ) : React.createElement('circle', { cx: x, cy: y, r: 10 })
-            ));
+            ));*/
         }
 
         return bubbles; 
@@ -108,4 +128,4 @@ renderMinutesBubbles: function () {
 
 
 module.exports = Test;
-//this is a comment dd ore ssssss
+//this is a comment dd ore ssssssss
