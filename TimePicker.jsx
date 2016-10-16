@@ -8,14 +8,11 @@ var Test = React.createClass({
 	getDefaultProps: function(){
 		return{
 			minutes: 0,
+            hours: 0,
 			size: 300,
 			radius: 100
 
 		    // mode: this.HOURS,
-            // hours:   0,
-            // minutes: 0,
-            // size:   300,
-            // radius: 125,
             // militaryTime: true
 		};
 	}, 
@@ -38,15 +35,33 @@ var Test = React.createClass({
     	return positions;
 	},
 
+    calcHourPositions: function () {
+        var size   = this.props.size;
+        var radius = this.props.radius;
+
+        var positions = [];
+
+        for (var i=1; i <= 12; ++i) {
+            positions.push([
+                Math.round(size / 2 + radius * Math.cos((i % 12 / 6 - 0.5) * Math.PI)),
+                Math.round(size / 2 + radius * Math.sin((i % 12 / 6 - 0.5) * Math.PI))
+            ]);
+        }
+
+        return positions;
+    },
+
 	// set inital state. State can be changed from the inside
 	getInitialState: function(){	
 		return {
 			minutes: this.props.minutes,
-			minutesPos: this.calcMinutePositions()
+            hours: this.props.hours,
+			minutesPos: this.calcMinutePositions(),
+            hoursPos: this.calcHourPositions()
 		};
 	}, 
 
-renderMinutesBubbles: function () {
+    renderMinutesBubbles: function () {
         var minutes   = this.state.minutes;
         var positions = this.state.minutesPos;
 

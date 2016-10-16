@@ -13,7 +13,5 @@ ReactDOM.render(<Timepicker/>, document.getElementById('timepickerex'));
    
 ReactDOM.render(<TimePicker />, document.getElementById('timepicker'));
 ReactDOM.render(<Test2 />, document.getElementById('test2'));
-//ReactDOM.render(<Test scream="Hello"/>, document.getElementById('test'));
-//ReactDOM.render(<Test>I am a child</Test>, document.getElementById('test'));
 
     	
