@@ -13,7 +13,18 @@ h1 {
     margin: 0;
 }
 
-h2,h3 {
+h2{
+	color: white;
+	text-align: center;
+	padding: 2em;
+	background: #7A1EA1;
+	margin: 0;
+	margin-bottom: 1em;
+	font-family: 'Roboto', sans-serif;
+	font-weight: normal;
+}
+
+h3 {
 	color: white;
 	text-align: center;
 	padding: 2em;
@@ -167,6 +178,13 @@ button {
 .timepicker-info-digits.active {
     color: #691A99;
 }
+
+
+
+
+
+
+
 
 /*Only to style the example*/
 .timepicker-invisible {
