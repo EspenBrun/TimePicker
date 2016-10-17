@@ -449,6 +449,70 @@ getDefaultProps: function(){
 // for example in componentDidMount 
 render: function(){},
 
+/////////////////////////////////////////
+// PARENTS STATE IS UPDATED BY A CHILD //
+/////////////////////////////////////////
+
+// Ideally, a child should be stateless
+// The parent has the states, it is statefull
+// The states are passed as props to the child
+// The child can use it's props to display, make decisions etc
+// If necessary, the parent also passes methods as props to the child,
+//    methods that can change the parents state
+// If the child uses such a method, the parent state will change,
+//    which will change the props that are passed to the child
+//    which will change what the child displays, the decisions it makes etc
+// A parent can also choose to let a child change a state
+//    that is passed as a prop to a different child, which then updates.
+// In this way, a child can update a sibling.
+
+// Ideal React: An instance of a stateful parent is rendered.
+// One stateless component displays the state of the parent
+// A different stateless child displays a way to change the parents state, like a button
+
+// Example below of child updating a parent. Code not ready, but almost I think.
+// Initally the button will display 'oldName'
+// when it is clicked, it will display 'newName'
+// and this happens via updating the parents state
+
+var Parent =React.createClass({
+
+  getInitialState: function(){
+    return {
+      name: 'oldName'
+    };
+  }
+
+  handleChange: function(newName){
+    this.setState({name: newName});
+  },
+
+  render: function(){
+    return <Child onChange={this.handleChange} name={this.state.name}/>
+  }
+
+});
+
+var Child = React.createClass({
+  handleChange: function(newName){
+    this.props.onChange(newName);
+  },
+
+  render: function(){
+    return (
+      <button onClick={this.handleChange("newName")}>{this.props.name}</button>
+      );
+  }
+
+});
+
+// React 0.13 introduced the possibility to define components using plain JavaScript ES6 classes.
+// But differently from the traditional React.createClass, 
+//    user defined methods in a ES6 class are not automatically bound!
+// SUPER IMPORTANT CHANGE
+
+
+
 /////////////////////
 // DEBUGGING ////////
 ////////////////////
