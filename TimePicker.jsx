@@ -26,6 +26,7 @@ var Test = React.createClass({
         return {
             minutes: this.props.minutes,
             hours: this.props.hours,
+            didmount: false,
             minutesPos: this.calcMinutePositions(),
             hoursPos: this.calcHourPositions(),
             visibilityHours: this.props.hoursVisible ? 'visible' : 'hidden',
@@ -62,6 +63,15 @@ var Test = React.createClass({
             ]);
         }
         return positions;
+    },
+
+    // When an hourBubble is clicked, set the state to that hour.
+    // Does not change props, so this.props.hours is still default.
+    // But that's ok as long as I just use state when referring to currently selected hour
+    handleClickHour: function(){
+        var newState = this.state.didmount == false ? true : true;
+        this.setState({didmount: newState});
+        //this.state.didmount ? this.setState({hours: i}) : null;
     },
 
     renderMinutesBubbles: function () {
@@ -111,11 +121,10 @@ var Test = React.createClass({
     renderHoursBubbles: function () {
         var hours   = this.state.hours;
         var positions = this.state.hoursPos;
-
         var x;
         var y;
+        var onClick;
 
-        //var onClick;
         //var onMouseMove;
 
         var bubbles = [];
@@ -130,12 +139,13 @@ var Test = React.createClass({
             // onMouseMove = this.onMouseMoveHour(i);
 
             // The bubble that has the same value as hour, which is saved in the state,
-            //      is given an additioan of ' active' in its className
-
+            //      is given an addition of ' active' in its className
+            
             bubbles.push(
                 <g  key={i}
-                    className=  {'timepicker-bubble' + (hours===i ? ' active' : '')}>
-                    <circle cx={x} cy={y} r={this.state.bubbleSize}/>
+                    className=  {'timepicker-bubble' + (hours===i ? ' active' : '')}
+                    >
+                    <circle cx={x} cy={y} r={this.state.bubbleSize} onClick={this.handleClickHour}/>
                     <text x={x} y={y}>{i}</text>            
                 </g>
             );
@@ -149,7 +159,7 @@ var Test = React.createClass({
         var radius = this.props.radius;
         //var mode = this.state.mode;
 
-        // render both hours and minutes, but one invisible
+        // render both hours and minutes, but one invisible. Also a timeface.
         return (
         	<svg width={size} height={size}>
         		<g className={this.state.visibilityHours}>
