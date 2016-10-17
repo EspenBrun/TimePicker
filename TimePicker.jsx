@@ -2,7 +2,7 @@ var React = require('react');
 
 
 
-var Test = React.createClass({
+var TimePicker = React.createClass({
 	
 	// set default props. Props can be changed from outside
     // If I don't have any animation when clock change from hour to minutes, 
@@ -180,5 +180,5 @@ var Test = React.createClass({
 });
 
 
-module.exports = Test;
+module.exports = TimePicker;
 //this is a comment dd ore ssssssssss
