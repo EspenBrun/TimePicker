@@ -154,7 +154,7 @@ var Test = React.createClass({
     handleClickHour: function(i){
         var newState = this.state.didmount == false ? true : true;
         this.setState({didmount: newState});
-        var lol = i;
+        this.setState({hours: i});
         //this.state.didmount ? this.setState({hours: i}) : null;
     },
 
