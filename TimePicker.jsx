@@ -6,8 +6,8 @@ var TimePicker = React.createClass({
 
     propTypes: {
         hours: React.PropTypes.number,
-        minutes: React.PropTypes.number,
-        onChange: React.PropTypes.func
+        minutes: React.PropTypes.number//,
+        //onChange: React.PropTypes.func
     },
 	
 	// set default props. Props can be changed from outside
@@ -73,6 +73,7 @@ var TimePicker = React.createClass({
     // But that's ok as long as I just use state when referring to currently selected hour
     handleClickHour: function(i){
         this.setState({hours: i});
+        this.onChange({i,i});
     },
 
     renderMinutesBubbles: function () {
