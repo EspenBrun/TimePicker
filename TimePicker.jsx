@@ -5,6 +5,8 @@ var React = require('react');
 var Test = React.createClass({
 	
 	// set default props. Props can be changed from outside
+    // If I don't have any animation when clock change from hour to minutes, 
+    //      then I dont need size and radius in props or bubbleSize in state
 	getDefaultProps: function(){
 		return{
 			minutes: 0,
