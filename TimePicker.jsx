@@ -8,17 +8,28 @@ var Test = React.createClass({
 	getDefaultProps: function(){
 		return{
 			minutes: 0,
-            hours: 0,
+            hours: 12,
 			size: 300,
-			radius: 100
+			radius: 100            
 
 		    // mode: this.HOURS,
             // militaryTime: true
 		};
 	}, 
 
+    // set inital state. State can be changed from the inside
+    getInitialState: function(){    
+        return {
+            minutes: this.props.minutes,
+            hours: this.props.hours,
+            minutesPos: this.calcMinutePositions(),
+            hoursPos: this.calcHourPositions(),
+            bubbleSize: 15*this.props.radius/100
+        };
+    }, 
+
 	// Calculate positions on a circle for each minute
-	// Slightly modified, men for loop is copypaste (just trigonomtry I know I can do)
+	// Slightly modified, men for loop is copypaste (just trigonomtry I know I can do) and moving to the middle of size
     calcMinutePositions: function () {
     	var size   = this.props.size;
     	var radius = this.props.radius;
@@ -51,16 +62,6 @@ var Test = React.createClass({
         return positions;
     },
 
-	// set inital state. State can be changed from the inside
-	getInitialState: function(){	
-		return {
-			minutes: this.props.minutes,
-            hours: this.props.hours,
-			minutesPos: this.calcMinutePositions(),
-            hoursPos: this.calcHourPositions()
-		};
-	}, 
-
     renderMinutesBubbles: function () {
         var minutes   = this.state.minutes;
         var positions = this.state.minutesPos;
@@ -68,8 +69,8 @@ var Test = React.createClass({
         var x;
         var y;
 
-        var onClick;
-        var onMouseMove;
+        //var onClick;
+        //var onMouseMove;
 
         var bubbles = [];
 
@@ -99,7 +100,7 @@ var Test = React.createClass({
             bubbles.push(
             	<g 	key={i}
             		className=	{'timepicker-bubble' + (i%5==0 ? '' : ' small') + (minutes===i ? ' active' : '')}>
-            		<circle cx={x} cy={y} r={ i%5==0 ? 15 : (minutes === i ? 5 : 0) }/>
+            		<circle cx={x} cy={y} r={ i%5==0 ? this.state.bubbleSize : (minutes === i ? this.state.bubbleSize/3 : 0) }/>
             		{textElement}            		
             	</g>
             );
@@ -108,16 +109,69 @@ var Test = React.createClass({
         return bubbles; 
     },
 
+    renderHoursBubbles: function () {
+        var hours   = this.state.hours;
+        var positions = this.state.hoursPos;
+
+        var x;
+        var y;
+
+        //var onClick;
+        //var onMouseMove;
+
+        var bubbles = [];
+
+        for (var i=1; i <= positions.length; ++i) {
+            // get position
+            x = positions[i-1][0];
+            y = positions[i-1][1];
+
+            // dont think I need these yet
+            // onClick     = this.onClickMinute(i);
+            // onMouseMove = this.onMouseMoveMinute(i);
+
+            // Bubbles with numbers that does divide by 5
+            //      is given an addition of ' small' in their classNames.
+            // The bubble that has the same value as minues, which is saved in the state,
+            //      is given an additioan of ' active' in its className
+            // This allows for separate styling!
+            // The size is determined by first checking if devideable by 5.
+            // These get a radius of 15
+            // Other bubles get radii 0, unless the bubble is selected.
+            // Then the bubble is small, radius 5.
+
+            bubbles.push(
+                <g  key={i}
+                    className=  {'timepicker-bubble' + (hours===i ? ' active' : '')}>
+                    <circle cx={x} cy={y} r={this.state.bubbleSize}/>
+                    <text x={x} y={y}>{i}</text>            
+                </g>
+            );
+        }
+
+        return bubbles; 
+    },
+
     render: function () {
         var size = this.props.size;
+        var radius = this.props.radius;
         //var mode = this.state.mode;
 
+        // div added to see both hours and minutes
         return (
+            <div>
         	<svg width={size} height={size}>
         		<g className="timepicker-visible">
         			{this.renderMinutesBubbles()}
         		</g>
         	</svg>
+            <svg width={size} height={size}>
+                <g className="timepicker-visible">
+                    <circle cx={.5*size} cy={.5*size} r={1.25*this.props.radius} id="timeface"/>
+                    {this.renderHoursBubbles()}
+                </g>
+            </svg>
+            </div>
         );
     },
 
@@ -125,4 +179,4 @@ var Test = React.createClass({
 
 
 module.exports = Test;
-//this is a comment dd ore ssssssss
+//this is a comment dd ore ssssssssss

@@ -56,6 +56,10 @@ button {
 
 }
 
+#timeface{
+	fill: rgba(0,0,0,0.1);
+}
+
 /*#00BCD4*/
 
 .timepicker {
