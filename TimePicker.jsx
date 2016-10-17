@@ -121,7 +121,6 @@ var TimePicker = React.createClass({
         var positions = this.state.hoursPos;
         var x;
         var y;
-        var onClick;
 
         //var onMouseMove;
 
@@ -142,8 +141,9 @@ var TimePicker = React.createClass({
             bubbles.push(
                 <g  key={i}
                     className=  {'timepicker-bubble' + (hours===i ? ' active' : '')}
+                    onClick={this.handleClickHour.bind(this,i)}
                     >
-                    <circle cx={x} cy={y} r={this.state.bubbleSize} onClick={this.handleClickHour.bind(this,i)}/>
+                    <circle cx={x} cy={y} r={this.state.bubbleSize} />
                     <text x={x} y={y}>{i}</text>            
                 </g>
             );
@@ -175,4 +175,4 @@ var TimePicker = React.createClass({
 
 
 module.exports = TimePicker;
-//this is a comment dd ore ssssssssss
+//this is a comment dd ore sssssssssss
