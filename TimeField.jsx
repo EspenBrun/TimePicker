@@ -21,8 +21,9 @@ var TimeField = React.createClass({
 	},
 
 	updateTime: function(iHours,iMinutes){
-		this.setState({minutes: iMinutes});
 		this.setState({hours: iHours});
+		this.setState({minutes: iMinutes});
+		
 	},
 
 

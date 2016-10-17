@@ -32,7 +32,11 @@ var TimePicker = React.createClass({
             visibilityMinutes: this.props.hoursVisible ?'hidden' : 'visible',
             bubbleSize: 15*this.props.radius/100 // Scaled relative to radius, so there is one less number to change if timeface needs different size
         };
-    }, 
+    },
+
+    onChange: function(iHours,iMinutes){
+        this.props.updateTime(iHours,iMinutes);
+    },
 
 	// Calculate positions on a circle for each minute
 	// For loop is copypaste (just trigonomtry I know I can do) and moving to the middle of size
