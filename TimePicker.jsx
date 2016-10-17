@@ -15,7 +15,7 @@ var TimePicker = React.createClass({
     //      then I dont need size and radius in props or bubbleSize in state
 	getDefaultProps: function(){
 		return{
-			hoursVisible: true,  
+			hoursVisible: true,
 			size: 300,
 			radius: 100
 		};
