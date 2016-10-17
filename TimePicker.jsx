@@ -3,21 +3,21 @@ var React = require('react');
 
 
 var TimePicker = React.createClass({
+
+    propTypes: {
+        hours: React.PropTypes.number,
+        minutes: React.PropTypes.number,
+        onChange: React.PropTypes.func
+    },
 	
 	// set default props. Props can be changed from outside
     // If I don't have any animation when clock change from hour to minutes, 
     //      then I dont need size and radius in props or bubbleSize in state
 	getDefaultProps: function(){
 		return{
-			minutes: 0,
-            hoursVisible: true,  
-            hours: 12,
+			hoursVisible: true,  
 			size: 300,
 			radius: 100
-                                 
-
-		    // mode: this.HOURS,
-            // militaryTime: true
 		};
 	}, 
 
@@ -34,8 +34,8 @@ var TimePicker = React.createClass({
         };
     },
 
-    onChange: function(iHours,iMinutes){
-        this.props.updateTime(iHours,iMinutes);
+    onChange: function(iMinutes,iHours){
+        this.props.updateTime(iMinutes,iHours);
     },
 
 	// Calculate positions on a circle for each minute

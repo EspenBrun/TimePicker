@@ -8,8 +8,8 @@ var TimeField = React.createClass({
 	getInitialState: function(){
 		return {
 			isModalOpen: false,
-			hours: '12',
-			minutes: '00'};
+			hours: 12,
+			minutes: 0};
 	},
 
 	openModal: function(){
