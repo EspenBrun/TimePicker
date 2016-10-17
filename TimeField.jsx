@@ -25,7 +25,6 @@ var TimeField = React.createClass({
 
 
 	render: function(){
-
 		return (	
 			<div>				
 				<button onClick={() => this.openModal()}>{this.state.time}</button>

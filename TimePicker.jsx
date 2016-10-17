@@ -65,14 +65,7 @@ var Test = React.createClass({
         return positions;
     },
 
-    // When an hourBubble is clicked, set the state to that hour.
-    // Does not change props, so this.props.hours is still default.
-    // But that's ok as long as I just use state when referring to currently selected hour
-    handleClickHour: function(){
-        var newState = this.state.didmount == false ? true : true;
-        this.setState({didmount: newState});
-        //this.state.didmount ? this.setState({hours: i}) : null;
-    },
+
 
     renderMinutesBubbles: function () {
         var minutes   = this.state.minutes;
@@ -119,6 +112,7 @@ var Test = React.createClass({
     },
 
     renderHoursBubbles: function () {
+
         var hours   = this.state.hours;
         var positions = this.state.hoursPos;
         var x;
@@ -152,6 +146,16 @@ var Test = React.createClass({
         }
 
         return bubbles; 
+    },
+
+        // When an hourBubble is clicked, set the state to that hour.
+    // Does not change props, so this.props.hours is still default.
+    // But that's ok as long as I just use state when referring to currently selected hour
+    handleClickHour: function(){
+        var newState = this.state.didmount == false ? true : true;
+        this.setState({didmount: newState});
+        var lol = i;
+        //this.state.didmount ? this.setState({hours: i}) : null;
     },
 
     render: function () {
