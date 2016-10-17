@@ -26,7 +26,6 @@ var TimePicker = React.createClass({
         return {
             minutes: this.props.minutes,
             hours: this.props.hours,
-            didmount: false,
             minutesPos: this.calcMinutePositions(),
             hoursPos: this.calcHourPositions(),
             visibilityHours: this.props.hoursVisible ? 'visible' : 'hidden',
@@ -65,7 +64,12 @@ var TimePicker = React.createClass({
         return positions;
     },
 
-
+    // When an hourBubble is clicked, set the state to that hour.
+    // Does not change props, so this.props.hours is still default.
+    // But that's ok as long as I just use state when referring to currently selected hour
+    handleClickHour: function(i){
+        this.setState({hours: i});
+    },
 
     renderMinutesBubbles: function () {
         var minutes   = this.state.minutes;
@@ -146,16 +150,6 @@ var TimePicker = React.createClass({
         }
 
         return bubbles; 
-    },
-
-        // When an hourBubble is clicked, set the state to that hour.
-    // Does not change props, so this.props.hours is still default.
-    // But that's ok as long as I just use state when referring to currently selected hour
-    handleClickHour: function(i){
-        var newState = this.state.didmount == false ? true : true;
-        this.setState({didmount: newState});
-        this.setState({hours: i});
-        //this.state.didmount ? this.setState({hours: i}) : null;
     },
 
     render: function () {
