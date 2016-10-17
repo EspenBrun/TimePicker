@@ -139,7 +139,7 @@ var Test = React.createClass({
                 <g  key={i}
                     className=  {'timepicker-bubble' + (hours===i ? ' active' : '')}
                     >
-                    <circle cx={x} cy={y} r={this.state.bubbleSize} onClick={this.handleClickHour}/>
+                    <circle cx={x} cy={y} r={this.state.bubbleSize} onClick={this.handleClickHour.bind(this,i)}/>
                     <text x={x} y={y}>{i}</text>            
                 </g>
             );
@@ -151,7 +151,7 @@ var Test = React.createClass({
         // When an hourBubble is clicked, set the state to that hour.
     // Does not change props, so this.props.hours is still default.
     // But that's ok as long as I just use state when referring to currently selected hour
-    handleClickHour: function(){
+    handleClickHour: function(i){
         var newState = this.state.didmount == false ? true : true;
         this.setState({didmount: newState});
         var lol = i;
