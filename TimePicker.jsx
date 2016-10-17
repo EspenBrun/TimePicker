@@ -12,7 +12,8 @@ var Test = React.createClass({
 			minutes: 0,
             hours: 12,
 			size: 300,
-			radius: 100            
+			radius: 100,
+                        
 
 		    // mode: this.HOURS,
             // militaryTime: true
@@ -35,7 +36,6 @@ var Test = React.createClass({
     calcMinutePositions: function () {
     	var size   = this.props.size;
     	var radius = this.props.radius;
-
 		var positions = [];
 
 		for (var i=0; i < 60; ++i) {
@@ -44,14 +44,12 @@ var Test = React.createClass({
 		        Math.round(size / 2 + radius * Math.sin((i / 30 - 0.5) * Math.PI))
 			]);
     	}
-
     	return positions;
 	},
 
     calcHourPositions: function () {
         var size   = this.props.size;
         var radius = this.props.radius;
-
         var positions = [];
 
         for (var i=1; i <= 12; ++i) {
@@ -60,21 +58,17 @@ var Test = React.createClass({
                 Math.round(size / 2 + radius * Math.sin((i % 12 / 6 - 0.5) * Math.PI))
             ]);
         }
-
         return positions;
     },
 
     renderMinutesBubbles: function () {
         var minutes   = this.state.minutes;
         var positions = this.state.minutesPos;
-
         var x;
         var y;
-
+        var bubbles = [];
         //var onClick;
         //var onMouseMove;
-
-        var bubbles = [];
 
         for (var i=0; i < positions.length; ++i) {
             // get position

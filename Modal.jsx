@@ -8,7 +8,8 @@ var Modal = React.createClass({
   close: function(e) {
     e.preventDefault(); //what does this do 
 
-    if (this.props.onClose) { //what does this if mean? If a method, call the method?
+    // if there is a props named onClose, access that 
+    if (this.props.onClose) {
       this.props.onClose();
     }
   },
