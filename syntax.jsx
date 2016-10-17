@@ -518,6 +518,7 @@ var Child = React.createClass({
 ////////////////////
 
 // Are your fukn variables etc consistently named???? ARE YOU SURE??
+// No you are not. Go back and check again. Really check.
 
 
 

@@ -6,8 +6,8 @@ var TimePicker = React.createClass({
 
     propTypes: {
         hours: React.PropTypes.number,
-        minutes: React.PropTypes.number//,
-        //onChange: React.PropTypes.func
+        minutes: React.PropTypes.number,
+        onChange: React.PropTypes.func
     },
 	
 	// set default props. Props can be changed from outside
@@ -35,7 +35,7 @@ var TimePicker = React.createClass({
     },
 
     onChange: function(iMinutes,iHours){
-        this.props.updateTime(iMinutes,iHours);
+        this.props.onChange(iMinutes,iHours);
     },
 
 	// Calculate positions on a circle for each minute
