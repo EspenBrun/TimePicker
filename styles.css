@@ -56,8 +56,16 @@ button {
 
 }
 
-#timeface{
+#timeface {
 	fill: rgba(0,0,0,0.1);
+}
+
+.visible {
+	visibility: visible;
+}
+
+.hidden {
+	visibility: hidden;
 }
 
 /*#00BCD4*/
@@ -137,6 +145,30 @@ button {
             transition: opacity 0.5s linear, transform 0.25s linear, visibility 0.5s linear, -webkit-transform 0.25s linear, -moz-transform 0.25s linear, -o-transform 0.25s linear;
 }
 
+
+
+.timepicker-info {
+    color: #bac0c5;
+
+    margin: 0;
+
+    font-size:    2em;
+    line-height:  1em;
+    font-weight: bold;
+
+    text-align: center;
+}
+
+.timepicker-info-digits {
+    cursor: pointer;
+}
+
+/*color of the active digits*/
+.timepicker-info-digits.active {
+    color: #691A99;
+}
+
+/*Only to style the example*/
 .timepicker-invisible {
     opacity: 0;
 
@@ -159,25 +191,4 @@ button {
         -ms-transform: scale(1);
          -o-transform: scale(1);
             transform: scale(1);
-}
-
-.timepicker-info {
-    color: #bac0c5;
-
-    margin: 0;
-
-    font-size:    2em;
-    line-height:  1em;
-    font-weight: bold;
-
-    text-align: center;
-}
-
-.timepicker-info-digits {
-    cursor: pointer;
-}
-
-/*color of the active digits*/
-.timepicker-info-digits.active {
-    color: #691A99;
 }

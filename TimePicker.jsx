@@ -13,6 +13,8 @@ var Test = React.createClass({
             hours: 12,
 			size: 300,
 			radius: 100,
+            visibilityHours: 'visible',
+            visibilityMinutes: 'hidden'
                         
 
 		    // mode: this.HOURS,
@@ -157,14 +159,12 @@ var Test = React.createClass({
         return (
             <div>
         	<svg width={size} height={size}>
-        		<g className="timepicker-visible">
-        			{this.renderMinutesBubbles()}
-        		</g>
-        	</svg>
-            <svg width={size} height={size}>
-                <g className="timepicker-visible">
+        		<g className={this.props.visibilityHours}>
                     <circle cx={.5*size} cy={.5*size} r={1.25*this.props.radius} id="timeface"/>
                     {this.renderHoursBubbles()}
+        		</g>            
+                <g className={this.props.visibilityMinutes}>
+                    {this.renderMinutesBubbles()}
                 </g>
             </svg>
             </div>
