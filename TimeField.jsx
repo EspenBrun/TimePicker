@@ -8,12 +8,15 @@ var TimeField = React.createClass({
 	getInitialState: function(){
 		return {
 			isModalOpen: false,
+			visible: true,
 			hours: 12,
 			minutes: 0};
 	},
 
 	openModal: function(){
-		this.setState({isModalOpen: true});
+		this.setState({
+			isModalOpen: true,
+			visible: true});
 	},
 
 	closeModal: function(){
@@ -21,9 +24,10 @@ var TimeField = React.createClass({
 	},
 
 	updateTime: function(iHours,iMinutes){
-		this.setState({hours: iHours});
-		this.setState({minutes: iMinutes});
-		
+		this.setState({
+			visible: false,
+			hours: iHours,
+			minutes: iMinutes});
 	},
 
 
@@ -42,6 +46,7 @@ var TimeField = React.createClass({
 					<h1>{displayHours}:{displayMinutes}</h1>  
 					<TimePicker 
 					onChange={this.updateTime}
+					visible={this.state.visible}
 					hours={this.state.hours}
 					minutes={this.state.minutes} /> 
 					<p>

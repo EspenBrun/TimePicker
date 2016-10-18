@@ -7,13 +7,13 @@ var TimePicker = React.createClass({
     propTypes: {
         hours: React.PropTypes.number,
         minutes: React.PropTypes.number,
-        onChange: React.PropTypes.func
+        onChange: React.PropTypes.func,
+        visible: React.PropTypes.bool
     },
 	
 	// set default props. Props can be changed from outside
     getDefaultProps: function(){
 		return{
-			hoursVisible: true,
 			size: 300,
 			radius: 100
 		};
@@ -26,8 +26,8 @@ var TimePicker = React.createClass({
             //hours: this.props.hours,
             minutesPos: this.calcMinutePositions(),
             hoursPos: this.calcHourPositions(),
-            visibilityHours: this.props.hoursVisible ? 'visible' : 'hidden',
-            visibilityMinutes: this.props.hoursVisible ?'hidden' : 'visible',
+            visibilityHours: this.props.visible ? 'visible' : 'hidden',
+            visibilityMinutes: this.props.visible ?'hidden' : 'visible',
             bubbleSize: 15*this.props.radius/100 // Scaled relative to radius, so there is one less number to change if timeface needs different size
         };
     },
