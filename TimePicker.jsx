@@ -73,7 +73,7 @@ var TimePicker = React.createClass({
     // But that's ok as long as I just use state when referring to currently selected hour
     handleClickHour: function(i){
         this.setState({hours: i});
-        this.onChange({i,i});
+        this.onChange(i,i);
     },
 
     renderMinutesBubbles: function () {
