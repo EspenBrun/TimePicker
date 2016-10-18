@@ -30,7 +30,6 @@ h3 {
 	padding: 2em;
 	background: #7A1EA1;
 	margin: 0;
-	margin-bottom: 1em;
 	font-family: 'Roboto:100', sans-serif;
 	font-weight: normal;
 
@@ -43,6 +42,7 @@ button {
 	opacity: 54%;
 	font-size: 20px;
 	padding: .5em .75em;
+  margin: 2em;
 	font-family: 'Roboto', sans-serif;
 	cursor: pointer;
 }
@@ -79,7 +79,10 @@ button {
 	visibility: hidden;
 }
 
-/*#00BCD4*/
+.close {
+  margin: 1em;
+  margin-top: 0;
+}
 
 .timepicker {
     -webkit-user-select: none;
