@@ -9,8 +9,6 @@ var TimeField = React.createClass({
 		return {
 			isModalOpen: false,
 			visible: true,
-            //visibilityHours: this.props.visible ? 'visible' : 'hidden',
-            //visibilityMinutes: this.props.visible ?'hidden' : 'visible',
 			hours: 12,
 			minutes: 0};
 	},
@@ -27,9 +25,10 @@ var TimeField = React.createClass({
 			visible: true});
 	},
 
-	updateTime: function(iHour,iMinute){
+	updateTime: function(iHour,iMinute,isModalOpen){
 		this.setState({
 			visible: false,
+			isModalOpen: isModalOpen,
 			hours: iHour,
 			minutes: iMinute});
 	},
@@ -51,6 +50,7 @@ var TimeField = React.createClass({
 					<TimePicker 
 					onChange={this.updateTime}
 					visible={this.state.visible}
+					isModalOpen={this.state.isModalOpen}
 					hours={this.state.hours}
 					minutes={this.state.minutes} /> 
 					<p>

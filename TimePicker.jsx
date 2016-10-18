@@ -8,7 +8,8 @@ var TimePicker = React.createClass({
         hours: React.PropTypes.number,
         minutes: React.PropTypes.number,
         onChange: React.PropTypes.func,
-        visible: React.PropTypes.bool
+        visible: React.PropTypes.bool,
+        isModalOpen: React.PropTypes.bool
     },
 	
 	// set default props. Props can be changed from outside
@@ -60,8 +61,8 @@ var TimePicker = React.createClass({
         return positions;
     },
 
-    onChange: function(iHour,iMinute){
-        this.props.onChange(iHour,iMinute);
+    onChange: function(iHour,iMinute,isModalOpen){
+        this.props.onChange(iHour,iMinute,isModalOpen);
     },
     
     // When an hourBubble is clicked, set the state to that hour.
@@ -69,11 +70,13 @@ var TimePicker = React.createClass({
     // But that's ok as long as I just use state when referring to currently selected hour
     handleClickHour: function(iHour){
         var iMinute = this.props.minutes;
-        this.onChange(iHour,iMinute);
+        var isModalOpen = true;
+        this.onChange(iHour,iMinute,isModalOpen);
     },
     handleClickMinute: function(iMinute){
         var iHour = this.props.hours;
-        this.onChange(iHour,iMinute);
+        var isModalOpen = false;
+        this.onChange(iHour,iMinute,isModalOpen);
     },
 
     renderMinutesBubbles: function () {
