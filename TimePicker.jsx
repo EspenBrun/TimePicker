@@ -86,7 +86,7 @@ var TimePicker = React.createClass({
         //var onMouseMove;
 
         for (var i=0; i < positions.length; ++i) {
-            // get position
+            // get position of bubble
             x = positions[i][0];
             y = positions[i][1];
 
@@ -110,7 +110,9 @@ var TimePicker = React.createClass({
             // Then the bubble is small, radius 5% timeface radius.
             bubbles.push(
             	<g 	key={'m'+i}
-            		className=	{'timepicker-bubble' + (i%5==0 ? '' : ' small') + (minutes===i ? ' active' : '')}>
+            		className=	{'timepicker-bubble' + (i%5==0 ? '' : ' small') + (minutes===i ? ' active' : '')}
+                    onClick={this.handleClickMinute.bind(this,i)}
+                    >
             		<circle cx={x} cy={y} r={ i%5==0 ? this.state.bubbleSize : (minutes === i ? this.state.bubbleSize/3 : 0) }/>
             		{textElement}            		
             	</g>
@@ -126,13 +128,13 @@ var TimePicker = React.createClass({
         var positions = this.state.hoursPos;
         var x;
         var y;
-
+        var bubbles = [];
         //var onMouseMove;
 
-        var bubbles = [];
+        
 
         for (var i=1; i <= positions.length; ++i) {
-            // get position
+            // get position of bubble
             x = positions[i-1][0];
             y = positions[i-1][1];
 
