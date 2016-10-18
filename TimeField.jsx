@@ -9,6 +9,8 @@ var TimeField = React.createClass({
 		return {
 			isModalOpen: false,
 			visible: true,
+            //visibilityHours: this.props.visible ? 'visible' : 'hidden',
+            //visibilityMinutes: this.props.visible ?'hidden' : 'visible',
 			hours: 12,
 			minutes: 0};
 	},
@@ -20,7 +22,9 @@ var TimeField = React.createClass({
 	},
 
 	closeModal: function(){
-		this.setState({isModalOpen: false});
+		this.setState({
+			isModalOpen: false,
+			visible: true});
 	},
 
 	updateTime: function(iHours,iMinutes){

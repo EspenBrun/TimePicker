@@ -16,24 +16,21 @@ var TimePicker = React.createClass({
 		return{
 			size: 300,
 			radius: 100
+            //visibilityHours: this.props.visible ? 'visible' : 'hidden',
+            //visibilityMinutes: this.props.visible ?'hidden' : 'visible',
 		};
 	}, 
 
     // set inital state. State can be changed from the inside
     getInitialState: function(){    
         return {
-            //minutes: this.props.minutes,
-            //hours: this.props.hours,
             minutesPos: this.calcMinutePositions(),
             hoursPos: this.calcHourPositions(),
-            visibilityHours: this.props.visible ? 'visible' : 'hidden',
-            visibilityMinutes: this.props.visible ?'hidden' : 'visible',
             bubbleSize: 15*this.props.radius/100 // Scaled relative to radius, so there is one less number to change if timeface needs different size
         };
     },
 
     onChange: function(iMinutes,iHours){
-        console.log(this.props.onChange);
         this.props.onChange(iMinutes,iHours);
     },
 
@@ -159,16 +156,18 @@ var TimePicker = React.createClass({
     render: function () {
         var size = this.props.size;
         var radius = this.props.radius;
+        var timeface = <circle cx={.5*size} cy={.5*size} r={1.25*this.props.radius} id="timeface"/>;
         //var mode = this.state.mode;
 
         // render both hours and minutes, but one invisible. Also a timeface.
         return (
         	<svg width={size} height={size}>
-        		<g className={this.state.visibilityHours}>
-                    <circle cx={.5*size} cy={.5*size} r={1.25*this.props.radius} id="timeface"/>
+        		<g className={this.props.visible ? 'visible' : 'hidden'}>
+                    {timeface}
                     {this.renderHoursBubbles()}
         		</g>            
-                <g className={this.state.visibilityMinutes}>
+                <g className={this.props.visible ? 'hidden' : 'visible'}>
+                    {timeface}
                     {this.renderMinutesBubbles()}
                 </g>
             </svg>
