@@ -27,12 +27,17 @@ var TimeField = React.createClass({
 	},
 
 
+
+
 	render: function(){
+		var displayHours = this.state.hours<10 ? '0' +  this.state.hours : this.state.hours;
+		var displayMinutes = this.state.minutes<10 ? '0' + this.state.minutes : this.state.minutes;
+
 		return (	
 			<div>				
-				<button onClick={() => this.openModal()}>{this.state.hours}:{this.state.minutes}</button>
+				<button onClick={() => this.openModal()}>{displayHours}:{displayMinutes}</button>
 				<Modal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
-					<h1>{this.state.hours}:{this.state.minutes}</h1>  
+					<h1>{displayHours}:{displayMinutes}</h1>  
 					<TimePicker onChange={this.updateTime} /> 
 					<p>
 						<button onClick={() => this.closeModal()}>Close</button>
