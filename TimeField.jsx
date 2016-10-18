@@ -1,7 +1,8 @@
 var React = require('react');
 var Modal = require('./Modal.jsx');
+var TimePicker = require('./TimePicker.jsx');
+//import TimePicker from './TimePicker.jsx';
 
-import TimePicker from './TimePicker.jsx';
 
 var TimeField = React.createClass({
 
