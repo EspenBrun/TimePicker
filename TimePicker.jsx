@@ -35,6 +35,7 @@ var TimePicker = React.createClass({
     },
 
     onChange: function(iMinutes,iHours){
+        console.log(this.props.onChange);
         this.props.onChange(iMinutes,iHours);
     },
 
