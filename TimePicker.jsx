@@ -11,9 +11,7 @@ var TimePicker = React.createClass({
     },
 	
 	// set default props. Props can be changed from outside
-    // If I don't have any animation when clock change from hour to minutes, 
-    //      then I dont need size and radius in props or bubbleSize in state
-	getDefaultProps: function(){
+    getDefaultProps: function(){
 		return{
 			hoursVisible: true,
 			size: 300,
@@ -24,8 +22,8 @@ var TimePicker = React.createClass({
     // set inital state. State can be changed from the inside
     getInitialState: function(){    
         return {
-            minutes: this.props.minutes,
-            hours: this.props.hours,
+            //minutes: this.props.minutes,
+            //hours: this.props.hours,
             minutesPos: this.calcMinutePositions(),
             hoursPos: this.calcHourPositions(),
             visibilityHours: this.props.hoursVisible ? 'visible' : 'hidden',
@@ -78,7 +76,7 @@ var TimePicker = React.createClass({
     },
 
     renderMinutesBubbles: function () {
-        var minutes   = this.state.minutes;
+        var minutes   = this.props.minutes;
         var positions = this.state.minutesPos;
         var x;
         var y;
@@ -123,7 +121,7 @@ var TimePicker = React.createClass({
 
     renderHoursBubbles: function () {
 
-        var hours   = this.state.hours;
+        var hours   = this.props.hours;
         var positions = this.state.hoursPos;
         var x;
         var y;

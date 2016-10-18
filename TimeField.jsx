@@ -36,9 +36,12 @@ var TimeField = React.createClass({
 		return (	
 			<div>				
 				<button onClick={() => this.openModal()}>{displayHours}:{displayMinutes}</button>
-				<Modal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()}>
+				<Modal 
+				isOpen={this.state.isModalOpen} 
+				onClose={() => this.closeModal()}>
 					<h1>{displayHours}:{displayMinutes}</h1>  
-					<TimePicker onChange={this.updateTime} /> 
+					<TimePicker 
+					onChange={this.updateTime} /> 
 					<p>
 						<button onClick={() => this.closeModal()}>Close</button>
 					</p>
