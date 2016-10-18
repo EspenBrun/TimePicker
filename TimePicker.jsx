@@ -4,6 +4,8 @@ var React = require('react');
 
 var TimePicker = React.createClass({
 
+    // Set proptypes for expected props, to make for easier debugging 
+    // Also serves as a visual guide inside this component of the props it will recieve
     propTypes: {
         hours: React.PropTypes.number,
         minutes: React.PropTypes.number,
@@ -17,8 +19,6 @@ var TimePicker = React.createClass({
 		return{
 			size: 300,
 			radius: 100
-            //visibilityHours: this.props.visible ? 'visible' : 'hidden',
-            //visibilityMinutes: this.props.visible ?'hidden' : 'visible',
 		};
 	}, 
 
@@ -47,6 +47,7 @@ var TimePicker = React.createClass({
     	return positions;
 	},
 
+    // Positions for the hours
     calcHourPositions: function () {
         var size   = this.props.size;
         var radius = this.props.radius;
@@ -61,41 +62,36 @@ var TimePicker = React.createClass({
         return positions;
     },
 
-    onChange: function(iHour,iMinute,isModalOpen){
-        this.props.onChange(iHour,iMinute,isModalOpen);
+    // Making the eventHandler function that calls the function inside props, 
+    //          which updates the state of timeField, specifically hours and minutes
+    onChange: function(iHour,iMinute){
+        this.props.onChange(iHour,iMinute);
     },
     
-    // When an hourBubble is clicked, set the state to that hour.
-    // Does not change props, so this.props.hours is still default.
-    // But that's ok as long as I just use state when referring to currently selected hour
+    // Ended up having two functions here, since I only pass one function from TimeField, 
+    //      updates both hour and minute simulatneously
+    // Should rather be made into two separate functions that are passed from TimeField
     handleClickHour: function(iHour){
         var iMinute = this.props.minutes;
-        var isModalOpen = true;
-        this.onChange(iHour,iMinute,isModalOpen);
+        this.onChange(iHour,iMinute);
     },
     handleClickMinute: function(iMinute){
         var iHour = this.props.hours;
-        var isModalOpen = false;
-        this.onChange(iHour,iMinute,isModalOpen);
+        this.onChange(iHour,iMinute);
     },
 
+    // Making the bubbles that will contain the minutes on the timeface
     renderMinutesBubbles: function () {
         var minutes   = this.props.minutes;
         var positions = this.state.minutesPos;
         var x;
         var y;
         var bubbles = [];
-        //var onClick;
-        //var onMouseMove;
 
         for (var i=0; i < positions.length; ++i) {
-            // get position of bubble
+            // get position of a bubble
             x = positions[i][0];
             y = positions[i][1];
-
-            // dont think I need these yet
-            // onClick     = this.onClickMinute(i);
-            // onMouseMove = this.onMouseMoveMinute(i);
 
             // conditional text element to be used inside JSX
             // If minutes divide by 5, make text with the minutes
@@ -111,6 +107,7 @@ var TimePicker = React.createClass({
             // These get a radius of 15% of the timeface radius with this.state.bubbleSize
             // Other bubles get radii 0, unless the bubble is selected.
             // Then the bubble is small, radius 5% timeface radius.
+            // Not sure why I need .bind(this,i), but googling errors gave this as a solution, and it works
             bubbles.push(
             	<g 	key={'m'+i}
             		className=	{'timepicker-bubble' + (i%5==0 ? '' : ' small') + (minutes===i ? ' active' : '')}
@@ -125,28 +122,20 @@ var TimePicker = React.createClass({
         return bubbles; 
     },
 
+    // Same procedure as for minutes, just simpler since all bubble will be the same size
+    // Expand to 24 hour later
     renderHoursBubbles: function () {
 
         var hours   = this.props.hours;
         var positions = this.state.hoursPos;
         var x;
         var y;
-        var bubbles = [];
-        //var onMouseMove;
-
-        
+        var bubbles = [];        
 
         for (var i=1; i <= positions.length; ++i) {
             // get position of bubble
             x = positions[i-1][0];
             y = positions[i-1][1];
-
-            // dont think I need these yet
-            // onClick     = this.onClickHour(i);
-            // onMouseMove = this.onMouseMoveHour(i);
-
-            // The bubble that has the same value as hour, which is saved in the state,
-            //      is given an addition of ' active' in its className
             
             bubbles.push(
                 <g  key={'h'+i}
@@ -166,7 +155,6 @@ var TimePicker = React.createClass({
         var size = this.props.size;
         var radius = this.props.radius;
         var timeface = <circle cx={.5*size} cy={.5*size} r={1.25*this.props.radius} id="timeface"/>;
-        //var mode = this.state.mode;
 
         // render both hours and minutes, but one invisible. Also a timeface.
         return (
@@ -187,4 +175,3 @@ var TimePicker = React.createClass({
 
 
 module.exports = TimePicker;
-//this is a comment dd ore sssssssssss
