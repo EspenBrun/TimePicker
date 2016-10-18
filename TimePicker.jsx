@@ -63,12 +63,17 @@ var TimePicker = React.createClass({
     onChange: function(iHour,iMinute){
         this.props.onChange(iHour,iMinute);
     },
+    
     // When an hourBubble is clicked, set the state to that hour.
     // Does not change props, so this.props.hours is still default.
     // But that's ok as long as I just use state when referring to currently selected hour
     handleClickHour: function(iHour){
-        //this.setState({hours: iHour});
-        this.onChange(iHour,iHour);
+        var iMinute = this.props.minutes;
+        this.onChange(iHour,iMinute);
+    },
+    handleClickMinute: function(iMinute){
+        var iHour = this.props.hours;
+        this.onChange(iHour,iMinute);
     },
 
     renderMinutesBubbles: function () {
