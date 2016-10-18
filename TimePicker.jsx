@@ -108,7 +108,7 @@ var TimePicker = React.createClass({
             // Other bubles get radii 0, unless the bubble is selected.
             // Then the bubble is small, radius 5% timeface radius.
             bubbles.push(
-            	<g 	key={i}
+            	<g 	key={'m'+i}
             		className=	{'timepicker-bubble' + (i%5==0 ? '' : ' small') + (minutes===i ? ' active' : '')}>
             		<circle cx={x} cy={y} r={ i%5==0 ? this.state.bubbleSize : (minutes === i ? this.state.bubbleSize/3 : 0) }/>
             		{textElement}            		
@@ -143,7 +143,7 @@ var TimePicker = React.createClass({
             //      is given an addition of ' active' in its className
             
             bubbles.push(
-                <g  key={i}
+                <g  key={'h'+i}
                     className=  {'timepicker-bubble' + (hours===i ? ' active' : '')}
                     onClick={this.handleClickHour.bind(this,i)}
                     >
