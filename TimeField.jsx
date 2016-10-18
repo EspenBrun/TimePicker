@@ -27,11 +27,11 @@ var TimeField = React.createClass({
 			visible: true});
 	},
 
-	updateTime: function(iHours,iMinutes){
+	updateTime: function(iHour,iMinute){
 		this.setState({
 			visible: false,
-			hours: iHours,
-			minutes: iMinutes});
+			hours: iHour,
+			minutes: iMinute});
 	},
 
 

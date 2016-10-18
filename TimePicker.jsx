@@ -30,10 +30,6 @@ var TimePicker = React.createClass({
         };
     },
 
-    onChange: function(iMinutes,iHours){
-        this.props.onChange(iMinutes,iHours);
-    },
-
 	// Calculate positions on a circle for each minute
 	// For loop is copypaste (just trigonomtry I know I can do) and moving to the middle of size
     calcMinutePositions: function () {
@@ -64,12 +60,15 @@ var TimePicker = React.createClass({
         return positions;
     },
 
+    onChange: function(iHour,iMinute){
+        this.props.onChange(iHour,iMinute);
+    },
     // When an hourBubble is clicked, set the state to that hour.
     // Does not change props, so this.props.hours is still default.
     // But that's ok as long as I just use state when referring to currently selected hour
-    handleClickHour: function(i){
-        this.setState({hours: i});
-        this.onChange(i,i);
+    handleClickHour: function(iHour){
+        //this.setState({hours: iHour});
+        this.onChange(iHour,iHour);
     },
 
     renderMinutesBubbles: function () {
