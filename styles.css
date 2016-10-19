@@ -4,17 +4,16 @@ html, body {
 	font-family: 'Roboto', sans-serif;
   text-align: center;
   font-size: 100%;
+  color: white;
 }
 
 h1 {
-    color: white;
-    text-align: center;
     padding: 2em;
     background: #691A99;
     margin: 0;
 }
 
-h2{
+h2, h3 {
 	color: white;
 	text-align: center;
 	padding: 2em;
@@ -25,15 +24,10 @@ h2{
 	font-weight: normal;
 }
 
-h3 {
-	color: white;
-	text-align: center;
-	padding: 2em;
-	background: #7A1EA1;
-	margin: 0;
-	font-family: 'Roboto:100', sans-serif;
-	font-weight: normal;
 
+h3 {
+	margin-bottom: 0;
+	font-family: 'Roboto:100', sans-serif;
 }
 
 button {
@@ -128,6 +122,8 @@ button {
     fill: transparent;
 }
 
+
+/*00 indicates the hours 13-00 ------------ */
 .timepicker-bubble:hover circle,
 .timepicker-bubble.active circle,
 .timepicker-bubble00:hover circle,
@@ -139,7 +135,6 @@ button {
 .timepicker-bubble text,
 .timepicker-bubble00 text  {
     fill: #000000;
-    font-family: 'Roboto', sans-serif;
     font-weight: bold;
     text-anchor: middle;
     dominant-baseline: middle;
