@@ -38,8 +38,8 @@ var TimeField = React.createClass({
 
 	render: function(){
 		// Adding a zero infront of hour/minute if it only has one digit. For displaying
-		var displayHours = this.state.hours>10 ? (this.state.hours==24 ? '00' : this.state.hours) : '0' + this.state.hours;
-		var displayMinutes = this.state.minutes>10 ? this.state.minutes : '0' + this.state.minutes;
+		var displayHours = this.state.hours>=10 ? (this.state.hours==24 ? '00' : this.state.hours) : '0' + this.state.hours;
+		var displayMinutes = this.state.minutes>=10 ? this.state.minutes : '0' + this.state.minutes;
 
 		// Renders the TimeField, which is just a button. 
 		// This button opens the Modal, it's children are displayed, among them the TimePicker

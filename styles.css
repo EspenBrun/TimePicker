@@ -88,11 +88,6 @@ button {
 	visibility: hidden;
 }
 
-.close {
-  margin: 1em;
-  margin-top: 0;
-}
-
 .timepicker-bubble,
 .timepicker-bubble00 {
     cursor: pointer;
