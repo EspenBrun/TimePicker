@@ -69,11 +69,19 @@ button {
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   z-index: 9998;
   background: rgba(0,0,0,0.3);
 
+}
+
+.disablescroll {
+  overflow: hidden;
+}
+
+.enablescroll {
+  overflow: scroll;
 }
 
 #timeface {
@@ -116,7 +124,6 @@ button {
 
     fill: transparent;
 }
-
 
 /*00 indicates the hours 13-00 ------------ */
 .timepicker-bubble:hover circle,
