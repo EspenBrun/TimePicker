@@ -18,7 +18,7 @@ var TimePicker = React.createClass({
     getDefaultProps: function(){
 		return{
 			size: 300,
-			radius: 100
+			radius: 100,
 		};
 	}, 
 
@@ -26,9 +26,13 @@ var TimePicker = React.createClass({
     getInitialState: function(){    
         return {
             minutesPos: this.calcMinutePositions(),
-            hoursPos: this.calcHourPositions(),
-            bubbleSize: 15*this.props.radius/100 // Scaled relative to radius, so there is one less number to change if timeface needs different size
+            hoursPos: this.calcHourPositions()
         };
+    },
+
+    // Scaled relative to radius, so there is one less number to change if timeface needs different size
+    calcBubbleSize: function(radius){
+        return 15*this.props.radius/100;
     },
 
 	// Calculate positions on a circle for each minute
@@ -53,11 +57,19 @@ var TimePicker = React.createClass({
         var radius = this.props.radius;
         var positions = [];
 
-        for (var i=1; i <= 12; ++i) {
-            positions.push([
-                Math.round(size / 2 + radius * Math.cos((i % 12 / 6 - 0.5) * Math.PI)),
-                Math.round(size / 2 + radius * Math.sin((i % 12 / 6 - 0.5) * Math.PI))
-            ]);
+        for (var i=1; i <= 24; ++i) {
+            if(i<=12){
+                positions.push([
+                    Math.round(size / 2 + radius * Math.cos((i % 12 / 6 - 0.5) * Math.PI)),
+                    Math.round(size / 2 + radius * Math.sin((i % 12 / 6 - 0.5) * Math.PI))
+                ]);
+            }
+            else{
+                positions.push([
+                    Math.round(size / 2 + (radius-3*this.calcBubbleSize(this.props.radius)) * Math.cos((i % 12 / 6 - 0.5) * Math.PI)),
+                    Math.round(size / 2 + (radius-3*this.calcBubbleSize(this.props.raius)) * Math.sin((i % 12 / 6 - 0.5) * Math.PI))
+                ]);
+            }
         }
         return positions;
     },
@@ -139,11 +151,11 @@ var TimePicker = React.createClass({
             
             bubbles.push(
                 <g  key={'h'+i}
-                    className=  {'timepicker-bubble' + (hours===i ? ' active' : '')}
+                    className=  {'timepicker-bubble' + (i<=12 ? '' : '00') + (hours===i ? ' active' : '')}
                     onClick={this.handleClickHour.bind(this,i)}
                     >
                     <circle cx={x} cy={y} r={this.state.bubbleSize} />
-                    <text x={x} y={y}>{i}</text>            
+                    <text x={x} y={y}>{i<=23 ? i : '00'}</text>            
                 </g>
             );
         }

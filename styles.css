@@ -84,11 +84,13 @@ button {
   margin-top: 0;
 }
 
-.timepicker-bubble {
+.timepicker-bubble,
+.timepicker-bubble00 {
     cursor: pointer;
 }
 
-.timepicker-bubble circle {
+.timepicker-bubble circle,
+.timepicker-bubble00 circle {
     r: 20;
     fill: transparent;
 }
@@ -112,15 +114,22 @@ button {
 }
 
 .timepicker-bubble:hover circle,
-.timepicker-bubble.active circle {
+.timepicker-bubble.active circle,
+.timepicker-bubble00:hover circle,
+.timepicker-bubble00.active circle {
     opacity: 1;
     fill: #00BCD4;
 }
 
-.timepicker-bubble text {
+.timepicker-bubble text,
+.timepicker-bubble00 text  {
     fill: #000000;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     text-anchor: middle;
     dominant-baseline: middle;
+}
+
+.timepicker-bubble00 text {
+  font-size: smaller;
 }
