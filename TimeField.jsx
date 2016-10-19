@@ -45,7 +45,7 @@ var TimeField = React.createClass({
 		// This button opens the Modal, it's children are displayed, among them the TimePicker
 		return (	
 			<div>				
-				<button onClick={() => this.openModal()}>
+				<button onClick={() => this.openModal()} className="button-timefield">
 					{displayHours}:{displayMinutes}
 				</button>
 				<Modal 
@@ -58,7 +58,7 @@ var TimeField = React.createClass({
 					isModalOpen={this.state.isModalOpen}
 					hours={this.state.hours}
 					minutes={this.state.minutes} /> 
-					<button onClick={() => this.closeModal()} className="close">Close</button>
+					<button onClick={() => this.closeModal()} className="button-close">Close</button>
 			</Modal>
 			</div>
 			

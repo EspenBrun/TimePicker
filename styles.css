@@ -3,6 +3,7 @@ html, body {
 	height: 100%;
 	font-family: 'Roboto', sans-serif;
   text-align: center;
+  font-size: 100%;
 }
 
 h1 {
@@ -36,16 +37,30 @@ h3 {
 }
 
 button {
-	background: transparent;
-	color: black;
-	border: .05em solid;
-	opacity: 54%;
-	font-size: 20px;
-	padding: .5em .75em;
-  margin: 2em;
-	font-family: 'Roboto', sans-serif;
-	cursor: pointer;
+  border-radius: 0.125em;
+  text-transform: uppercase;
+  padding: .5em .75em;
+  margin: 2em;  
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
 }
+
+.button-timefield {
+	border: .05em solid;
+  background: transparent; 
+  color: rgba(0,0,0,.80);
+  font-weight: bold;
+  font-size: 110%;
+}
+
+.button-close {
+  border: none;
+  background: #00BCD4;
+  color: white;
+  font-size: 100%;
+  margin-top: 0;
+}
+
 
 #modalStyle {
   position: absolute;
@@ -128,6 +143,7 @@ button {
     font-weight: bold;
     text-anchor: middle;
     dominant-baseline: middle;
+    opacity: 0.85;
 }
 
 .timepicker-bubble00 text {
