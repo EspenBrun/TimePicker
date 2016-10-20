@@ -109,7 +109,6 @@ button {
 
 .timepicker-bubble.small circle {
     r: 0;
-
     fill: none;
 }
 
@@ -121,7 +120,6 @@ button {
 
 .timepicker-bubble.small circle + circle {
     r: 5;
-
     fill: transparent;
 }
 
