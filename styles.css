@@ -17,6 +17,18 @@ h1 {
   padding: 1em;
 }
 
+.timeh1 span {
+  cursor: pointer;
+}
+
+.timeh1-active {
+  color: rgba(255,255,255,1);
+}
+
+.timeh1-inactive {
+  color: rgba(255,255,255,.53);
+}
+
 h2, h3 {
 	color: white;
 	text-align: center;
