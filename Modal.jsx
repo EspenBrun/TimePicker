@@ -25,7 +25,7 @@ var Modal = React.createClass({
       // returning null tells React that I do not want anything rendered
       return null; 
     }
-  }
+  } 
 
 });
 
