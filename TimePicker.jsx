@@ -180,6 +180,7 @@ var TimePicker = React.createClass({
         var size = this.props.size;
         var radius = this.props.radius;
         var timeface = <circle cx={.5*size} cy={.5*size} r={1.25*this.props.radius} id="timeface"/>;
+        var timefacedot = <circle cx={.5*size} cy={.5*size} r="3" id="timefacedot"/>;
 
         // render both hours and minutes, but one invisible. Also a timeface.
         return (
@@ -187,10 +188,13 @@ var TimePicker = React.createClass({
         		<g className={this.props.visible ? 'visible' : 'hidden'}>
                     {timeface}
                     {this.renderHoursBubbles()}
+                    {timefacedot}
         		</g>            
                 <g className={this.props.visible ? 'hidden' : 'visible'}>
                     {timeface}
                     {this.renderMinutesBubbles()}
+                    {timefacedot}
+
                 </g>
             </svg>
         );
