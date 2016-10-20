@@ -15,12 +15,16 @@ var TimeField = React.createClass({
 	},
 
 	openModal: function(){
+		document.getElementById("bodyid").className = "disablescroll";
+
 		this.setState({
 			isModalOpen: true,
 			visible: true});
 	},
 
 	closeModal: function(){
+		document.getElementById("bodyid").className = "enablescroll";
+
 		this.setState({
 			isModalOpen: false,
 			visible: true});
