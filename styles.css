@@ -133,11 +133,19 @@ button {
     opacity: 1;
     fill: #00BCD4;
 }
+
 .timepicker-bubble:hover line,
 .timepicker-bubble00:hover line,
 .timepicker-bubble.small:hover line{
   stroke: #00BCD4;
   stroke-width: 2;  
+}
+
+.timepicker-bubble:hover text,
+.timepicker-bubble.active text,
+.timepicker-bubble00:hover text,
+.timepicker-bubble00.active text {
+    fill: #FFFFFF;
 }
 
 .timepicker-bubble text,
