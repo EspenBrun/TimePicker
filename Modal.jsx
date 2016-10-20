@@ -23,7 +23,7 @@ var Modal = React.createClass({
     else{
       // if the Modal should not open, return null.
       // returning null tells React that I do not want anything rendered
-      return null; 
+      return null;
     }
   } 
 

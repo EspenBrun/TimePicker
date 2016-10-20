@@ -23,10 +23,20 @@ h1 {
 
 .timeh1-active {
   color: rgba(255,255,255,1);
+  
+  -webkit-transition: color 0.15s;
+  -moz-transition: color 0.15s;
+  -o-transition: color 0.15s;
+  transition: color 0.15s;
 }
 
 .timeh1-inactive {
   color: rgba(255,255,255,.53);
+
+  -webkit-transition: color 0.15s;
+  -moz-transition: color 0.15s;
+  -o-transition: color 0.15s;
+  transition: color 0.15s;
 }
 
 h2, h3 {
@@ -95,7 +105,9 @@ button {
   transform: translate(-50%, -50%);
   z-index: 9998;
   background: rgba(0,0,0,0.3);
-
+  
+  -webkit-transition: color 2s;
+  transition: color 2s;
 }
 
 .disablescroll {
