@@ -19,7 +19,7 @@ var TimePicker = React.createClass({
 		return{
 			size: 300,
 			radius: 100,
-            bubbleSize: 15 //15% of radius
+            bubbleSize: .15*100 //15% of radius
 		};
 	}, 
 
@@ -79,12 +79,20 @@ var TimePicker = React.createClass({
     // Ended up having two functions here, since I only pass one function from TimeField, 
     //      updates both hour and minute simulatneously
     // Should rather be made into two separate functions that are passed from TimeField
-    handleClickHour: function(iHour){
+/*    handleClickHour: function(iHour){
         var iMinute = this.props.minutes;
         this.onChange(iHour,iMinute);
+    },*/
+// getAttribute("cx")
+    handleClickHour: function(e){
+        var iMinute = this.props.minutes;
+        var iHour = Number(e.target.getAttribute("class"));
+        this.onChange(iHour,iMinute);
     },
-    handleClickMinute: function(iMinute){
+
+    handleClickMinute: function(e){
         var iHour = this.props.hours;
+        var iMinute = Number(e.target.getAttribute("class"));
         this.onChange(iHour,iMinute);
     },
 
@@ -94,7 +102,7 @@ var TimePicker = React.createClass({
         var positions  = this.state.minutesPos;
         var size = this.props.size;
         var x;
-        var y;
+        var y;  
         var bubbles = [];
 
         for (var i=0; i < positions.length; ++i) {
@@ -106,8 +114,12 @@ var TimePicker = React.createClass({
             // If minutes divide by 5, make text with the minutes and a line
             // Else make a line and a circle of radius 10
             // These two then return the two desired JSX elements in the correct order
-            var textLine = i%5==0 ? <text x={x} y={y}>{i}</text> : <line x1={size/2} y1={size/2} x2={x} y2={y} />;
-            var lineBubble = i%5==0 ? <line x1={size/2} y1={size/2} x2={x} y2={y} /> : <circle cx={x} cy={y} r="10"></circle>;
+            // The classname of {i} is used to get the value of i from the event object
+            // Not ideal, since it is possible to click bubble, text and line, and it is possible to other elemts as well
+            // Workaround since I cant use bind, which is not supported for KitKat and iOS8
+            var textLine = i%5==0 ? <text className={i} x={x} y={y}>{i}</text> : <line className={i} x1={size/2} y1={size/2} x2={x} y2={y} />;
+            var lineBubble = i%5==0 ? <line className={i} x1={size/2} y1={size/2} x2={x} y2={y} /> : <circle className={i} cx={x} cy={y} r="10"></circle>;
+
             // Bubbles with numbers that does divide by 5
             // 		is given an addition of ' small' in their classNames.
             // The bubble that has the same value as minues, which is saved in the state,
@@ -121,9 +133,9 @@ var TimePicker = React.createClass({
             bubbles.push(
             	<g 	key={'m'+i}
             		className=	{'timepicker-bubble' + (i%5==0 ? '' : ' small') + (minutes===i ? ' active' : '')}
-                    onClick={this.handleClickMinute.bind(this,i)}
+                    onClick={this.handleClickMinute}
                     >
-            		<circle cx={x} cy={y} r={ i%5==0 ? this.state.bubbleSize : (minutes === i ? this.state.bubbleSize/3 : 0) }/>
+            		<circle className={i} cx={x} cy={y} r={ i%5==0 ? this.state.bubbleSize : (minutes === i ? this.state.bubbleSize/3 : 0) }/>
                     {lineBubble}
             		{textLine}            		
 
@@ -134,8 +146,7 @@ var TimePicker = React.createClass({
         return bubbles; 
     },
 
-    // Same procedure as for minutes, just simpler since all bubble will be the same size
-    // Expand to 24 hour later
+    // Same procedure as for minutes, but all bubles same size, but different radius for hours 13-24
     renderHoursBubbles: function () {
 
         var hours   = this.props.hours;
@@ -153,11 +164,11 @@ var TimePicker = React.createClass({
             bubbles.push(
                 <g  key={'h'+i}
                     className=  {'timepicker-bubble' + (i<=12 ? '' : '00') + (hours===i ? ' active' : '')}
-                    onClick={this.handleClickHour.bind(this,i)}
+                    onClick={this.handleClickHour}
                     >
-                    <circle cx={x} cy={y} r={this.state.bubbleSize} />
-                    <line x1={size/2} y1={size/2} x2={x} y2={y} />
-                    <text x={x} y={y}>{i<=23 ? i : '00'}</text>            
+                    <circle className={i} cx={x} cy={y} r={this.state.bubbleSize} />
+                    <line className={i} x1={size/2} y1={size/2} x2={x} y2={y} />
+                    <text className={i} x={x} y={y}>{i<=23 ? i : '00'}</text>            
                 </g>
             );
         }
