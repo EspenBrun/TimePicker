@@ -19,6 +19,7 @@ var TimePicker = React.createClass({
 		return{
 			size: 300,
 			radius: 100,
+            bubbleSize: 15 //15% of radius
 		};
 	}, 
 
@@ -28,11 +29,6 @@ var TimePicker = React.createClass({
             minutesPos: this.calcMinutePositions(),
             hoursPos: this.calcHourPositions()
         };
-    },
-
-    // Scaled relative to radius, so there is one less number to change if timeface needs different size
-    calcBubbleSize: function(radius){
-        return 15*this.props.radius/100;
     },
 
 	// Calculate positions on a circle for each minute
@@ -66,8 +62,8 @@ var TimePicker = React.createClass({
             }
             else{
                 positions.push([
-                    Math.round(size / 2 + (radius-3*this.calcBubbleSize(this.props.radius)) * Math.cos((i % 12 / 6 - 0.5) * Math.PI)),
-                    Math.round(size / 2 + (radius-3*this.calcBubbleSize(this.props.raius)) * Math.sin((i % 12 / 6 - 0.5) * Math.PI))
+                    Math.round(size / 2 + (radius-3*this.props.bubbleSize) * Math.cos((i % 12 / 6 - 0.5) * Math.PI)),
+                    Math.round(size / 2 + (radius-3*this.props.bubbleSize) * Math.sin((i % 12 / 6 - 0.5) * Math.PI))
                 ]);
             }
         }
@@ -95,7 +91,8 @@ var TimePicker = React.createClass({
     // Making the bubbles that will contain the minutes on the timeface
     renderMinutesBubbles: function () {
         var minutes   = this.props.minutes;
-        var positions = this.state.minutesPos;
+        var positions  = this.state.minutesPos;
+        var size = this.props.size;
         var x;
         var y;
         var bubbles = [];
@@ -106,10 +103,11 @@ var TimePicker = React.createClass({
             y = positions[i][1];
 
             // conditional text element to be used inside JSX
-            // If minutes divide by 5, make text with the minutes
-            // Else make a circle of radius 10
-            var textElement = (i%5==0 ? <text x={x} y={y}>{i}</text> : <circle cx={x} cy={y} r="10"></circle>);
-
+            // If minutes divide by 5, make text with the minutes and a line
+            // Else make a line and a circle of radius 10
+            // These two then return the two desired JSX elements in the correct order
+            var textLine = i%5==0 ? <text x={x} y={y}>{i}</text> : <line x1={size/2} y1={size/2} x2={x} y2={y} />;
+            var lineBubble = i%5==0 ? <line x1={size/2} y1={size/2} x2={x} y2={y} /> : <circle cx={x} cy={y} r="10"></circle>;
             // Bubbles with numbers that does divide by 5
             // 		is given an addition of ' small' in their classNames.
             // The bubble that has the same value as minues, which is saved in the state,
@@ -126,7 +124,9 @@ var TimePicker = React.createClass({
                     onClick={this.handleClickMinute.bind(this,i)}
                     >
             		<circle cx={x} cy={y} r={ i%5==0 ? this.state.bubbleSize : (minutes === i ? this.state.bubbleSize/3 : 0) }/>
-            		{textElement}            		
+                    {lineBubble}
+            		{textLine}            		
+
             	</g>
             );
         }
@@ -140,6 +140,7 @@ var TimePicker = React.createClass({
 
         var hours   = this.props.hours;
         var positions = this.state.hoursPos;
+        var size = this.props.size;
         var x;
         var y;
         var bubbles = [];        
@@ -155,6 +156,7 @@ var TimePicker = React.createClass({
                     onClick={this.handleClickHour.bind(this,i)}
                     >
                     <circle cx={x} cy={y} r={this.state.bubbleSize} />
+                    <line x1={size/2} y1={size/2} x2={x} y2={y} />
                     <text x={x} y={y}>{i<=23 ? i : '00'}</text>            
                 </g>
             );
