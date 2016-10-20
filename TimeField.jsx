@@ -15,15 +15,12 @@ var TimeField = React.createClass({
 	},
 
 	openModal: function(){
-		document.getElementById("bodyid").className = "disablescroll";
 		this.setState({
 			isModalOpen: true,
-			visible: true,
-		});
+			visible: true});
 	},
 
 	closeModal: function(){
-		document.getElementById("bodyid").className = "enablescroll";
 		this.setState({
 			isModalOpen: false,
 			visible: true});
@@ -48,12 +45,12 @@ var TimeField = React.createClass({
 		// This button opens the Modal, it's children are displayed, among them the TimePicker
 		return (	
 			<div>				
-				<button onClick={() => this.openModal()} className="button-timefield">
+				<button onClick={this.openModal} className="button-timefield">
 					{displayHours}:{displayMinutes}
 				</button>
 				<Modal 
 					isOpen={this.state.isModalOpen} 
-					onClose={() => this.closeModal()}>
+					onClose={this.closeModal}>
 					<h1>{displayHours}:{displayMinutes}</h1>  
 					<TimePicker 
 					onChange={this.updateTime}
@@ -61,7 +58,7 @@ var TimeField = React.createClass({
 					isModalOpen={this.state.isModalOpen}
 					hours={this.state.hours}
 					minutes={this.state.minutes} /> 
-					<button onClick={() => this.closeModal()} className="button-close">Close</button>
+					<button onClick={this.closeModal} className="button-close">Close</button>
 			</Modal>
 			</div>
 			
