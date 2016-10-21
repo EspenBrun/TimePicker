@@ -79,11 +79,6 @@ var TimePicker = React.createClass({
     // Ended up having two functions here, since I only pass one function from TimeField, 
     //      updates both hour and minute simulatneously
     // Should rather be made into two separate functions that are passed from TimeField
-/*    handleClickHour: function(iHour){
-        var iMinute = this.props.minutes;
-        this.onChange(iHour,iMinute);
-    },*/
-// getAttribute("cx")
     handleClickHour: function(e){
         var iMinute = this.props.minutes;
         var iHour = Number(e.target.getAttribute("class"));
@@ -154,7 +149,7 @@ var TimePicker = React.createClass({
         var size = this.props.size;
         var x;
         var y;
-        var bubbles = [];        
+        var bubbles = [];
 
         for (var i=1; i <= positions.length; ++i) {
             // get position of bubble

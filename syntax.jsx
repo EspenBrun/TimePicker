@@ -406,7 +406,8 @@ componentWillMount: function(){},
 
 // invoked once, right after the initial rendering
 // only on client side
-componentDidMount: function(){},
+// This is where I would put AJAX!
+componentDidMount: function(prevProps,prevState){},
 
 // UPDATING
 
@@ -418,7 +419,10 @@ componentDidMount: function(){},
 // The old props can be accessed via this.props
 // Calling this.setState() within componentWillRecieveProps
 //    dos not trigger an additional render
-// Not sure if it has to have nextProps as an argument
+// Could probably call without the argument, if I would do something every new render,
+//    and don't explicitly need the nextProps
+// NB! The nextProps does not have to be different! They are passed anyway.
+// If my code really need them to be different, I need to check that they in fact are
 componentWillRecieveProps: function(nextProps){
   this.setState({
     likesIncreasing: nextProps.likeCount > this.props.likeCount
