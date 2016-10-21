@@ -69,8 +69,13 @@
     dominant-baseline: middle;
 }
 
+#timeface {
+    fill: rgba(0,0,0,0.1);
+}
+
+
 .timepicker-hand,
-.hourHand {
+.hourhand {
     opacity: 1;
 
     stroke: #3caeff;
