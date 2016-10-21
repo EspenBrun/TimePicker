@@ -27,7 +27,8 @@ var TimePicker = React.createClass({
     getInitialState: function(){    
         return {
             minutesPos: this.calcMinutePositions(),
-            hoursPos: this.calcHourPositions()
+            hoursPos: this.calcHourPositions(),
+            isMouseDown: false
         };
     },
 
@@ -91,6 +92,13 @@ var TimePicker = React.createClass({
         this.onChange(iHour,iMinute);
     },
 
+    onMouseMoveHour: function(e){
+        var isMouseUp = (e.type === 'mouseup');
+        if (isMouseUp || e.buttons === 1) {
+            this.handleClickHour(e)
+        }
+    },
+
     // Making the bubbles that will contain the minutes on the timeface
     renderMinutesBubbles: function () {
         var minutes   = this.props.minutes;
@@ -128,7 +136,7 @@ var TimePicker = React.createClass({
             bubbles.push(
             	<g 	key={'m'+i}
             		className=	{'timepicker-bubble' + (i%5==0 ? '' : ' small') + (minutes===i ? ' active' : '')}
-                    onClick={this.handleClickMinute}
+                    onMouseUp={this.handleClickMinute}
                     >
             		<circle className={i} cx={x} cy={y} r={ i%5==0 ? this.state.bubbleSize : (minutes === i ? this.state.bubbleSize/3 : 0) }/>
                     {lineBubble}
@@ -144,7 +152,7 @@ var TimePicker = React.createClass({
     // Same procedure as for minutes, but all bubles same size, but different radius for hours 13-24
     renderHoursBubbles: function () {
 
-        var hours   = this.props.hours;
+        var hours = this.props.hours;
         var positions = this.state.hoursPos;
         var size = this.props.size;
         var x;
@@ -156,10 +164,12 @@ var TimePicker = React.createClass({
             x = positions[i-1][0];
             y = positions[i-1][1];
             
+            // onMouseMove={this.onMouseMoveHour}
             bubbles.push(
                 <g  key={'h'+i}
                     className=  {'timepicker-bubble' + (i<=12 ? '' : '00') + (hours===i ? ' active' : '')}
-                    onClick={this.handleClickHour}
+                    onMouseUp={this.handleClickHour}
+                    
                     >
                     <circle className={i} cx={x} cy={y} r={this.state.bubbleSize} />
                     
