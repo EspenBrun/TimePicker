@@ -48,8 +48,9 @@ var TimeField = React.createClass({
 	// eventHandler function that will be passed to the TimePicker, which will let that 
 	//		component update this parent components state
 	// When called, updates minutes and hours, and automatically shows minute timeface when hour is picked
-	updateTime: function(iHour,iMinute){
+	handleUp: function(iHour,iMinute){
 		this.setState({
+			isDown: false,
 			visible: false,
 			hours: iHour,
 			minutes: iMinute});
@@ -72,15 +73,7 @@ var TimeField = React.createClass({
 		}
 	},
 
-	handleUp: function(iHour,iMinute){
-		this.setState({
-			isDown: false,
-			hours: iHour,
-			minutes: iMinute,
-			visible: false
-		});
-	},
-
+	
 
 
 
@@ -107,7 +100,6 @@ var TimeField = React.createClass({
 						<span className={minutesActive} onClick={this.showMinutes}>{displayMinutes}</span>
 					</h1>  
 					<TimePicker
-					onChange={this.updateTime}
 					onDown={this.handleDown}
 					onMove={this.handleMove}
 					onUp={this.handleUp}

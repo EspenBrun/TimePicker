@@ -9,7 +9,6 @@ var TimePicker = React.createClass({
     propTypes: {
         hours: React.PropTypes.number,
         minutes: React.PropTypes.number,
-        onChange: React.PropTypes.func,
         visible: React.PropTypes.bool,
         isModalOpen: React.PropTypes.bool,
         isDown: React.PropTypes.bool,
@@ -83,11 +82,11 @@ var TimePicker = React.createClass({
         if(visible == true){
             var iMinute = this.props.minutes;
             var iHour = Number(e.target.getAttribute("class"));
-            this.props.onChange(iHour,iMinute);
+            this.props.onUp(iHour,iMinute);
         }else{
             var iHour = this.props.hours;
             var iMinute = Number(e.target.getAttribute("class"));
-            this.props.onChange(iHour,iMinute); 
+            this.props.onUp(iHour,iMinute); 
         }
     },
 
