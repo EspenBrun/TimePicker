@@ -194,18 +194,3 @@ button {
   font-size: smaller;
 }
 
-/*shit copy-paste styling, but more logic first*/
-.hourhand {
-  stroke: #00BCD4;
-  stroke-width: 2;
-
-    -webkit-transition-duration: 0.25s;
-       -moz-transition-duration: 0.25s;
-         -o-transition-duration: 0.25s;
-            transition-duration: 0.25s;
-
-    -webkit-transition-timing-function: linear;
-       -moz-transition-timing-function: linear;
-         -o-transition-timing-function: linear;
-            transition-timing-function: linear;
-}

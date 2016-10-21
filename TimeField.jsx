@@ -61,7 +61,7 @@ var TimeField = React.createClass({
 		if(this.state.isDown == true){
 			this.setState({
 				hours: iHour,
-				minutes: iMinutes
+				minutes: iMinute
 			});
 		}
 	},
