@@ -77,7 +77,7 @@ var TimePicker = React.createClass({
     // Ended up having two functions here, since I only pass one function from TimeField, 
     //      updates both hour and minute simulatneously
     // Should rather be made into two separate functions that are passed from TimeField
-    handleClick: function(e){
+    handleUp: function(e){
         var visible = this.props.visible;
       
         if(visible == true){
@@ -139,8 +139,8 @@ var TimePicker = React.createClass({
             bubbles.push(
             	<g 	key={'m'+i}
             		className=	{'timepicker-bubble' + (i%5==0 ? '' : ' small') + (minutes===i ? ' active' : '')}
-                    onMouseUp={this.handleClick}
-                    onTouchEnd={this.handleClick}
+                    onMouseUp={this.handleUp}
+                    onTouchEnd={this.handleUp}
                     >
             		<circle className={i} cx={x} cy={y} r={ i%5==0 ? this.state.bubbleSize : (minutes === i ? this.state.bubbleSize/3 : 0) }/>
                     {lineBubble}
@@ -173,8 +173,8 @@ var TimePicker = React.createClass({
                 <g  key={'h'+i}
                     className=  {'timepicker-bubble' + (i<=12 ? '' : '00') + (hours===i ? ' active' : '')}
                     
-                    onMouseUp={this.handleClick}
-                    onTouchEnd={this.handleClick}                    
+                    onMouseUp={this.handleUp}
+                    onTouchEnd={this.handleUp}                    
                     >
                     <circle className={i} cx={x} cy={y} r={this.state.bubbleSize} />
                     
