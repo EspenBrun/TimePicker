@@ -162,24 +162,65 @@ var TimePicker = React.createClass({
                     onClick={this.handleClickHour}
                     >
                     <circle className={i} cx={x} cy={y} r={this.state.bubbleSize} />
-                    <line className={i} x1={size/2} y1={size/2} x2={x} y2={y} />
+                    
                     <text className={i} x={x} y={y}>{i<=23 ? i : '00'}</text>            
                 </g>
             );
         }
-
+/*<line refclassName={i} x1={size/2} y1={size/2} x2={x} y2={y} />*/
         return bubbles; 
+    },
+
+    componentDidUpdate: function(prevProps,prevState){
+        var hours = this.props.hours;
+        var hoursPos = this.state.hoursPos;
+        var hourHand = this.refs.hourhand;
+
+        if (prevProps.hours === hours){
+            return null;
+        }
+
+        // if I can set attributes to hourHand, I have it. If not, I need to find it
+        if(!hourHand.setAttribute){
+            hourHand = React.findDOMNode ? React.finDOMNode(hourHand) : hourHand.getDOMNode();
+        }
+
+        hourHand.setAttribute('x2',hoursPos[hours][0]);
+        hourHand.setAttribute('y2',hoursPos[hours][1]);
+
+        //not sure what this does
+        var dxH = hourHand.getAttribute('x1') - hourHand.getAttribute('x2');
+        var dyH = hourHand.getAttribute('y1') - hourHand.getAttribute('y2');
+
+        var hourHandLength = Math.ceil(Math.sqrt(dxH * dxH + dyH * dyH));
+
+        hourHand.style.strokeDasharray  = hourHandLength;
+        hourHand.style.strokeDashoffset = hourHandLength;
+        hourHand.style.transitionProperty = 'none';
+        hourHand.style.transitionProperty = 'none';
+
+        hourHand.getBoundingClientRect();
+        hourHand.style.transitionProperty = 'stroke-dashoffset';
+        hourHand.style.strokeDashoffset = '0';
+
+        console.log('now this runs');
+
+
     },
 
     render: function () {
         var size = this.props.size;
         var radius = this.props.radius;
+        var x = this.state.hoursPos[this.props.hours][0];
+        var y = this.state.hoursPos[this.props.hours][1];
         var timeface = <circle cx={.5*size} cy={.5*size} r={1.25*this.props.radius} id="timeface"/>;
         var timefacedot = <circle cx={.5*size} cy={.5*size} r="3" id="timefacedot"/>;
 
         // render both hours and minutes, but one invisible. Also a timeface.
+        // 
         return (
         	<svg width={size} height={size}>
+                <line ref="hourhand" className="hourhand" x1={size/2} y1={size/2} x2={x} y2={y} />
         		<g className={this.props.visible ? 'visible' : 'hidden'}>
                     {timeface}
                     {this.renderHoursBubbles()}

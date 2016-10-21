@@ -69,8 +69,9 @@
     dominant-baseline: middle;
 }
 
-.timepicker-hand {
-    opacity: 0.25;
+.timepicker-hand,
+.hourHand {
+    opacity: 1;
 
     stroke: #3caeff;
     stroke-width: 5;
