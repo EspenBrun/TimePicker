@@ -189,8 +189,8 @@ var TimePicker = React.createClass({
             hourHand = React.findDOMNode ? React.finDOMNode(hourHand) : hourHand.getDOMNode();
         }
 
-        hourHand.setAttribute('x2',hoursPos[hours][0]);
-        hourHand.setAttribute('y2',hoursPos[hours][1]);
+        hourHand.setAttribute('x2',hoursPos[hours-1][0]);
+        hourHand.setAttribute('y2',hoursPos[hours-1][1]);
 
         //not sure what this does
         var dxH = hourHand.getAttribute('x1') - hourHand.getAttribute('x2');
@@ -206,10 +206,6 @@ var TimePicker = React.createClass({
         hourHand.getBoundingClientRect();
         hourHand.style.transitionProperty = 'stroke-dashoffset';
         hourHand.style.strokeDashoffset = '0';
-
-        console.log(hourHand);
-
-
     },
 
     render: function () {
