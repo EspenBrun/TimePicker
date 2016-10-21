@@ -48,13 +48,6 @@ var TimeField = React.createClass({
 	// eventHandler function that will be passed to the TimePicker, which will let that 
 	//		component update this parent components state
 	// When called, updates minutes and hours, and automatically shows minute timeface when hour is picked
-	handleUp: function(iHour,iMinute){
-		this.setState({
-			isDown: false,
-			visible: false,
-			hours: iHour,
-			minutes: iMinute});
-	},
 
 	handleDown: function(iHour,iMinute){
 		this.setState({
@@ -73,9 +66,13 @@ var TimeField = React.createClass({
 		}
 	},
 
-	
-
-
+	handleUp: function(iHour,iMinute){
+		this.setState({
+			isDown: false,
+			visible: false,
+			hours: iHour,
+			minutes: iMinute});
+	},
 
 	render: function(){
 		// Adding a zero infront of hour/minute if it only has one digit. For displaying

@@ -73,9 +73,34 @@ var TimePicker = React.createClass({
         return positions;
     },
 
-    // Ended up having two functions here, since I only pass one function from TimeField, 
-    //      updates both hour and minute simulatneously
-    // Should rather be made into two separate functions that are passed from TimeField
+    handleDown: function(e){
+        var visible = this.props.visible;
+      
+        if(visible == true){
+            var iMinute = this.props.minutes;
+            var iHour = Number(e.target.getAttribute("class"));
+            this.props.onDown(iHour,iMinute);
+        }else{
+            var iHour = this.props.hours;
+            var iMinute = Number(e.target.getAttribute("class"));
+            this.props.onDown(iHour,iMinute); 
+        }
+    },
+
+    handleMove: function(e){
+        var visible = this.props.visible;
+
+        if(visible == true){
+            var iMinute = this.props.minutes;
+            var iHour = Number(e.target.getAttribute("class"));
+            this.props.onDown(iHour,iMinute);
+        }else{
+            var iHour = this.props.hours;
+            var iMinute = Number(e.target.getAttribute("class"));
+            this.props.onDown(iHour,iMinute); 
+        }
+    },
+
     handleUp: function(e){
         var visible = this.props.visible;
       
@@ -89,6 +114,8 @@ var TimePicker = React.createClass({
             this.props.onUp(iHour,iMinute); 
         }
     },
+
+
 
     /*handleMove: function(e){
         var
@@ -173,7 +200,7 @@ var TimePicker = React.createClass({
                     className=  {'timepicker-bubble' + (i<=12 ? '' : '00') + (hours===i ? ' active' : '')}
                     
                     onMouseUp={this.handleUp}
-                    onTouchEnd={this.handleUp}                    
+                    onTouchEnd={this.handleUp}
                     >
                     <circle className={i} cx={x} cy={y} r={this.state.bubbleSize} />
                     
@@ -231,7 +258,6 @@ var TimePicker = React.createClass({
         var timefacedot = <circle cx={.5*size} cy={.5*size} r="3" id="timefacedot"/>;
 
         // render both hours and minutes, but one invisible. Also a timeface.
-        // 
         return (
         	<svg width={size} height={size}>
                 <line ref="hourhand" className="hourhand" x1={size/2} y1={size/2} x2={x} y2={y} />
