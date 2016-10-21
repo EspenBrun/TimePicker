@@ -171,6 +171,10 @@ var TimePicker = React.createClass({
         return bubbles; 
     },
 
+    componentDidMount: function(){
+        this.componentDidUpdate({},{});
+    },
+
     componentDidUpdate: function(prevProps,prevState){
         var hours = this.props.hours;
         var hoursPos = this.state.hoursPos;
@@ -203,7 +207,7 @@ var TimePicker = React.createClass({
         hourHand.style.transitionProperty = 'stroke-dashoffset';
         hourHand.style.strokeDashoffset = '0';
 
-        console.log('now this runs');
+        console.log(hourHand);
 
 
     },
