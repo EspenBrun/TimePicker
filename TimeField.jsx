@@ -45,10 +45,9 @@ var TimeField = React.createClass({
 	},
 
 
-	// eventHandler function that will be passed to the TimePicker, which will let that 
+	// eventHandler functions that will be passed to the TimePicker, which will let that 
 	//		component update this parent components state
 	// When called, updates minutes and hours, and automatically shows minute timeface when hour is picked
-
 	handleDown: function(iHour,iMinute){
 		this.setState({
 			isDown: true,

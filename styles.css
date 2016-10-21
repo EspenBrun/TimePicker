@@ -50,7 +50,6 @@ h2, h3 {
 	font-weight: normal;
 }
 
-
 h3 {
 	margin-bottom: 0;
 	font-family: 'Roboto:100', sans-serif;
@@ -85,7 +84,6 @@ button {
   margin-top: 0;
 }
 
-
 #modalStyle {
   position: fixed;
   top: 50%;
@@ -105,9 +103,6 @@ button {
   transform: translate(-50%, -50%);
   z-index: 9998;
   background: rgba(0,0,0,0.3);
-  
-  -webkit-transition: color 2s;
-  transition: color 2s;
 }
 
 .disablescroll {
@@ -130,26 +125,21 @@ button {
 	visibility: hidden;
 }
 
-.timepicker-bubble,
-.timepicker-bubble00 {
-    cursor: pointer;
-}
-
 .timepicker-bubble circle,
 .timepicker-bubble00 circle {
     r: 20;
     fill: transparent;
+    cursor: pointer;
 }
 
 .timepicker-bubble.small circle {
-    r: 0;
+    r: 5;
     fill: none;
 }
 
 .timepicker-bubble.small:hover circle,
 .timepicker-bubble.small.active circle {
     r: 5;
-
 }
 
 .timepicker-bubble.small circle + circle {
@@ -188,6 +178,12 @@ button {
     text-anchor: middle;
     dominant-baseline: middle;
     opacity: 0.85;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;           /* Non-prefixed version, currently not supported by any browser */
 }
 
 .timepicker-bubble00 text {

@@ -35,7 +35,7 @@ var TimePicker = React.createClass({
     },
 
 	// Calculate positions on a circle for each minute
-	// For loop is copypaste (just trigonomtry I know I can do) and moving to the middle of size
+	// For loop is copypasta (just trigonomtry I know I can do) and moving to the middle of size
     calcMinutePositions: function () {
     	var size   = this.props.size;
     	var radius = this.props.radius;
@@ -73,6 +73,7 @@ var TimePicker = React.createClass({
         return positions;
     },
 
+    // Eventhandlers for pressing, moving and releasing
     handleDown: function(e){
         var visible = this.props.visible;
       
@@ -115,19 +116,6 @@ var TimePicker = React.createClass({
         }
     },
 
-
-
-    /*handleMove: function(e){
-        var
-    },*/
-
-/*    onMouseMoveHour: function(e){
-        var isMouseUp = (e.type === 'mouseup');
-        if (isMouseUp || e.buttons === 1) {
-            this.handleClickHour(e)
-        }
-    },*/
-
     // Making the bubbles that will contain the minutes on the timeface
     renderMinutesBubbles: function () {
         var minutes   = this.props.minutes;
@@ -158,7 +146,7 @@ var TimePicker = React.createClass({
             //		is given an additioan of ' active' in its className
             // This allows for separate styling!
             // The size is determined by first checking if devideable by 5.
-            // These get a radius of 15% of the timeface radius with this.state.bubbleSize
+            // These get a radius of 15% of the timeface radius with this.props.bubbleSize
             // Other bubles get radii 0, unless the bubble is selected.
             // Then the bubble is small, radius 5% timeface radius.
             // Not sure why I need .bind(this,i), but googling errors gave this as a solution, and it works
@@ -172,7 +160,7 @@ var TimePicker = React.createClass({
                     onMouseUp={this.handleUp}
                     onTouchEnd={this.handleUp}
                     >
-            		<circle className={i} cx={x} cy={y} r={ i%5==0 ? this.state.bubbleSize : (minutes === i ? this.state.bubbleSize/3 : 0) }/>
+            		<circle className={i} cx={x} cy={y} r={ i%5==0 ? this.props.bubbleSize : (minutes === i ? this.props.bubbleSize/3 : 0) }/>
                     {lineBubble}
             		{textLine}            		
 
@@ -198,7 +186,6 @@ var TimePicker = React.createClass({
             x = positions[i-1][0];
             y = positions[i-1][1];
             
-            // onMouseMove={this.onMouseMoveHour}
             bubbles.push(
                 <g  key={'h'+i}
                     className={'timepicker-bubble' + (i<=12 ? '' : '00') + (hours===i ? ' active' : '')}
@@ -209,64 +196,14 @@ var TimePicker = React.createClass({
                     onMouseUp={this.handleUp}
                     onTouchEnd={this.handleUp}
                     >
-                    <circle className={i} cx={x} cy={y} r={this.state.bubbleSize} />
+                    <circle className={i} cx={x} cy={y} r={this.props.bubbleSize} />
                     <line className={i} x1={size/2} y1={size/2} x2={x} y2={y} />
                     <text className={i} x={x} y={y}>{i<=23 ? i : '00'}</text>            
                 </g>
             );
         }
-/**/
         return bubbles; 
     },
-
-    /*componentDidMount: function(){
-        this.componentDidUpdate({},{});
-    },
-
-    componentDidUpdate: function(prevProps,prevState){
-        var hours = this.props.hours;
-        var hoursPos = this.state.hoursPos;
-        var hourHand = this.refs.hourhand;
-
-        var minutes = this.props.minutes;
-        var minutesPos = this.state.minutesPos;
-        var minuteHand = this.refs.minutehand;
-
-        if (prevProps.hours === hours){
-            return null;
-        }
-
-        if (prevProps.hours === hours){
-
-        }
-
-        // if I can set attributes to hourHand, I have it. If not, I need to find it
-        if(!hourHand.setAttribute){
-            hourHand = React.findDOMNode ? React.finDOMNode(hourHand) : hourHand.getDOMNode();
-        }
-
-        if(!minuteHand.setAttribute){
-            minuteHand = React.findDOMNode ? React.finDOMNode(minuteHand) : minuteHand.getDOMNode();
-        }
-
-        minuteHand.setAttribute('x2',minutesPos[hours-1][0]);
-        minuteHand.setAttribute('y2',minutesPos[hours-1][1]);
-
-       //I dont think I need any of this
-        // var dxH = hourHand.getAttribute('x1') - hourHand.getAttribute('x2');
-        // var dyH = hourHand.getAttribute('y1') - hourHand.getAttribute('y2');
-
-        // var hourHandLength = Math.ceil(Math.sqrt(dxH * dxH + dyH * dyH));
-
-        // hourHand.style.strokeDasharray  = hourHandLength;
-        // hourHand.style.strokeDashoffset = hourHandLength;
-        // hourHand.style.transitionProperty = 'none';
-        // hourHand.style.transitionProperty = 'none';
-
-        // hourHand.getBoundingClientRect();
-        // hourHand.style.transitionProperty = 'stroke-dashoffset';
-        // hourHand.style.strokeDashoffset = '0';
-    },*/
 
     render: function () {
         var size = this.props.size;
@@ -275,21 +212,17 @@ var TimePicker = React.createClass({
         var timefacedot = <circle cx={.5*size} cy={.5*size} r="3" id="timefacedot"/>;
 
         // render both hours and minutes, but one invisible. Also a timeface.
-         // <line ref="hourhand" className="hourhand" x1={size/2} y1={size/2} x2={size/2} y2={size/2} />
         return (
         	<svg width={size} height={size}>
         		<g className={this.props.visible ? 'visible' : 'hidden'}>
-                   
                     {timeface}
                     {this.renderHoursBubbles()}
                     {timefacedot}
         		</g>            
                 <g className={this.props.visible ? 'hidden' : 'visible'}>
-                    
                     {timeface}
                     {this.renderMinutesBubbles()}
                     {timefacedot}
-
                 </g>
             </svg>
         );
