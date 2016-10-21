@@ -11,7 +11,9 @@ var TimeField = React.createClass({
 			isModalOpen: false,
 			visible: true,
 			hours: 12,
-			minutes: 0};
+			minutes: 0,
+			isDown: false
+		};
 	},
 
 	openModal: function(){
@@ -53,6 +55,35 @@ var TimeField = React.createClass({
 			minutes: iMinute});
 	},
 
+	handleDown: function(iHour,iMinute){
+		this.setState({
+			isDown: true,
+			hours: iHour,
+			minutes: iMinute
+		});
+	},
+
+	handleMove: function(iHour,iMinute){
+		if(this.state.isDown == true){
+			this.setState({
+				hours: iHour,
+				minutes: iMinutes
+			});
+		}
+	},
+
+	handleUp: function(iHour,iMinute){
+		this.setState({
+			isDown: false,
+			hours: iHour,
+			minutes: iMinute,
+			visible: false
+		});
+	},
+
+
+
+
 	render: function(){
 		// Adding a zero infront of hour/minute if it only has one digit. For displaying
 		var displayHours = this.state.hours>=10 ? (this.state.hours==24 ? '00' : this.state.hours) : '0' + this.state.hours;
@@ -77,8 +108,12 @@ var TimeField = React.createClass({
 					</h1>  
 					<TimePicker
 					onChange={this.updateTime}
+					onDown={this.handleDown}
+					onMove={this.handleMove}
+					onUp={this.handleUp}
 					visible={this.state.visible}
 					isModalOpen={this.state.isModalOpen}
+					isDown={this.state.isDown}
 					hours={this.state.hours}
 					minutes={this.state.minutes} /> 
 					<button onClick={this.closeModal} className="button-close">Close</button>

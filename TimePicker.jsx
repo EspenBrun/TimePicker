@@ -11,7 +11,8 @@ var TimePicker = React.createClass({
         minutes: React.PropTypes.number,
         onChange: React.PropTypes.func,
         visible: React.PropTypes.bool,
-        isModalOpen: React.PropTypes.bool
+        isModalOpen: React.PropTypes.bool,
+        isDown: React.PropTypes.bool
     },
 	
 	// set default props. Props can be changed from outside
@@ -27,8 +28,7 @@ var TimePicker = React.createClass({
     getInitialState: function(){    
         return {
             minutesPos: this.calcMinutePositions(),
-            hoursPos: this.calcHourPositions(),
-            isMouseDown: false
+            hoursPos: this.calcHourPositions()
         };
     },
 
@@ -92,12 +92,12 @@ var TimePicker = React.createClass({
         this.onChange(iHour,iMinute);
     },
 
-    onMouseMoveHour: function(e){
+/*    onMouseMoveHour: function(e){
         var isMouseUp = (e.type === 'mouseup');
         if (isMouseUp || e.buttons === 1) {
             this.handleClickHour(e)
         }
-    },
+    },*/
 
     // Making the bubbles that will contain the minutes on the timeface
     renderMinutesBubbles: function () {
