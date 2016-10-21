@@ -12,7 +12,10 @@ var TimePicker = React.createClass({
         onChange: React.PropTypes.func,
         visible: React.PropTypes.bool,
         isModalOpen: React.PropTypes.bool,
-        isDown: React.PropTypes.bool
+        isDown: React.PropTypes.bool,
+        onDown: React.PropTypes.func,
+        onMove: React.PropTypes.func,
+        onUp: React.PropTypes.func
     },
 	
 	// set default props. Props can be changed from outside
@@ -71,26 +74,26 @@ var TimePicker = React.createClass({
         return positions;
     },
 
-    // Making the eventHandler function that calls the function inside props, 
-    //          which updates the state of timeField, specifically hours and minutes
-    onChange: function(iHour,iMinute){
-        this.props.onChange(iHour,iMinute);
-    },
-    
     // Ended up having two functions here, since I only pass one function from TimeField, 
     //      updates both hour and minute simulatneously
     // Should rather be made into two separate functions that are passed from TimeField
-    handleClickHour: function(e){
-        var iMinute = this.props.minutes;
-        var iHour = Number(e.target.getAttribute("class"));
-        this.onChange(iHour,iMinute);
+    handleClick: function(e){
+        var visible = this.props.visible;
+      
+        if(visible == true){
+            var iMinute = this.props.minutes;
+            var iHour = Number(e.target.getAttribute("class"));
+            this.props.onChange(iHour,iMinute);
+        }else{
+            var iHour = this.props.hours;
+            var iMinute = Number(e.target.getAttribute("class"));
+            this.props.onChange(iHour,iMinute); 
+        }
     },
 
-    handleClickMinute: function(e){
-        var iHour = this.props.hours;
-        var iMinute = Number(e.target.getAttribute("class"));
-        this.onChange(iHour,iMinute);
-    },
+    /*handleMove: function(e){
+        var
+    },*/
 
 /*    onMouseMoveHour: function(e){
         var isMouseUp = (e.type === 'mouseup');
@@ -136,7 +139,8 @@ var TimePicker = React.createClass({
             bubbles.push(
             	<g 	key={'m'+i}
             		className=	{'timepicker-bubble' + (i%5==0 ? '' : ' small') + (minutes===i ? ' active' : '')}
-                    onMouseUp={this.handleClickMinute}
+                    onMouseUp={this.handleClick}
+                    onTouchEnd={this.handleClick}
                     >
             		<circle className={i} cx={x} cy={y} r={ i%5==0 ? this.state.bubbleSize : (minutes === i ? this.state.bubbleSize/3 : 0) }/>
                     {lineBubble}
@@ -168,8 +172,9 @@ var TimePicker = React.createClass({
             bubbles.push(
                 <g  key={'h'+i}
                     className=  {'timepicker-bubble' + (i<=12 ? '' : '00') + (hours===i ? ' active' : '')}
-                    onMouseUp={this.handleClickHour}
                     
+                    onMouseUp={this.handleClick}
+                    onTouchEnd={this.handleClick}                    
                     >
                     <circle className={i} cx={x} cy={y} r={this.state.bubbleSize} />
                     
