@@ -197,8 +197,11 @@ var TimePicker = React.createClass({
             // onMouseMove={this.onMouseMoveHour}
             bubbles.push(
                 <g  key={'h'+i}
-                    className=  {'timepicker-bubble' + (i<=12 ? '' : '00') + (hours===i ? ' active' : '')}
-                    
+                    className={'timepicker-bubble' + (i<=12 ? '' : '00') + (hours===i ? ' active' : '')}
+                    onMouseDown={this.handleDown}
+                    onTouchStart={this.handleDown}
+                    onMouseMove={this.handleMove}
+                    onTouchMove={this.handleMove}
                     onMouseUp={this.handleUp}
                     onTouchEnd={this.handleUp}
                     >
