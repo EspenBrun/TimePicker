@@ -4,7 +4,7 @@
 2. Install node.js (to get the npm package manager): https://nodejs.org/en/
 3. Open cmd, and cd to the timepicker directory
 4. Still in cmd, run
-    npm install
+       npm install
 ·        this step automatically installs all the dependencies found in the package.json file
 5.      Still on cmd, run
 ·        npm start
