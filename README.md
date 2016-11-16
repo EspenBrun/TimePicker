@@ -1,6 +1,7 @@
 # TimePicker
 
-Download/clone the repository: https://github.com/EspenBrun/TimePicker 
+1. Download/clone the repository: https://github.com/EspenBrun/TimePicker
+
 2.      Install node.js (to get the npm package manager): https://nodejs.org/en/
 3.      Open cmd, and cd to the timepicker directory
 4.      Still in cmd, run
